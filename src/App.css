@@ -1,5 +1,60 @@
-.App {
-  text-align: center;
+.app {
+  /* text-align: center; */
 }
 
+.nav-container {
+  height: 10vh;
+  width: 95vw;
+  background-color: blanchedalmond;
+  margin: 2%;
+  border-style: dashed;
+}
 
+.nav-list {
+  list-style-type: none;
+}
+
+.nav-list > li {
+  float: right;
+  padding: 3%;
+}
+
+.login {
+  background-color: coral;
+  height: 85vh;
+  width: 100vw;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  border-style: dashed;
+}
+
+.country-search {
+  background-color: coral;
+  height: 85vh;
+  width: 100vw;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  border-style: dashed;
+}
+
+.user-profile {
+  background-color: coral;
+  height: 85vh;
+  width: 100vw;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  border-style: dashed;
+}
+
+.home {
+  background-color: coral;
+  height: 85vh;
+  width: 100vw;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  border-style: dashed;
+}
