@@ -4,12 +4,12 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 import Nav from './Components/Nav'
-import CountrySearch from './Components/CountrySearch'
 
 import UserProfile from './Components/UserProfile'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Home from './Components/Home'
+import CountryPage from './Components/CountryPage'
 
 import {Switch, Route} from 'react-router-dom'
 
@@ -18,6 +18,7 @@ const App = () => {
   //(1st is the initial state, 2nd is a function definition)
 
   let [users, setUsers] = useState([])
+  let [countries, setCountries] = useState([])
   //useEffect takes in 2 arguments 
     //1. a callback (annonymous arrow function ()=>{})
     //2. an array of dependencies (everytime something within this changes
@@ -27,6 +28,7 @@ const App = () => {
   //similar to componentDidMount when there is an empty array
   
   console.log("USERS", users)
+  console.log("COUNTRIES", countries)
 
   useEffect(() => {
     fetch("http://localhost:3000/users")
@@ -36,25 +38,31 @@ const App = () => {
       })
   }, [])
 
+  useEffect(() => {
+    fetch("http://localhost:3000/countries")
+      .then(resp => resp.json())
+      .then((countryArray) => {
+        setCountries(countryArray)
+      })
+  }, [])
 
-  let handleAddUser = (e) => {
+  // let handleClick = (e) => {
+  
         //FAMILIAR VERSION
-    // let copyOfUsers = [...users, "new user"]
-    // setUsers(copyOfUsers)
+          // let copyOfUsers = [...users, "new user"]
+          // setUsers(copyOfUsers)
 
-        //PREFERRED VERSION
-    setUsers((prevUsers) => {return [...prevUsers, "new user"]})
+        //PREFERRED VERSION  
+          // ** setUsers((prevUsers) => {return [...prevUsers, "new user"]}) **
 
     //what is passed into setUsers OVERWRITES the original state in useState
-      //so you need to do the copy of the users and add the new one
+    //so you need to do the copy of the users and add the new one
     //setUsers behaves like setState -> triggers a rerender
     //setUsers is asynchronous
-  }
 
   return (
     <div className="app">
         <Nav />
-        <CountrySearch />
 
       <div>
       <Switch>
@@ -64,12 +72,15 @@ const App = () => {
         <UserProfile users={users}/>
       </Route>
 
+      <Route exact path="/country">
+        <CountryPage country={countries}/>
+      </Route>
+
       {/* do the route this way to include props in the component */}
       <Route path="/login">
         <Login />
       </Route>
 
-      <Route exact path="/search" component={CountrySearch} />
       <Route exact path="/" component={Home} />
       <Route exact path="/signup" component={Signup} />
 

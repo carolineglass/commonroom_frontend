@@ -1,7 +1,13 @@
-import React from 'react'
-import UserPost from './UserPost'
+import React, {useState} from 'react'
+import UserPosts from './UserPosts'
 
 const UserProfile = ({users}) => {
+
+    let [toggle, setToggle] = useState(false)
+
+    let handleClick = (e) => {
+        setToggle((prevToggle) => {return !prevToggle})
+    }
 
     return (
     <>
@@ -18,21 +24,30 @@ const UserProfile = ({users}) => {
 
                 <h1>{users[0].full_name}</h1>
                 <h3 className="username">{users[0].username}</h3>
-                <p>{users[0].from}</p>
+                <p>Currently in <strong>{users[0].country.name}</strong></p>
+                <p>From <strong>{users[0].from}</strong></p>
                 <p>{users[0].age}</p>
                 <p><strong>Bio:</strong> {users[0].bio}</p>
+                <p><strong>Favorite Food:</strong> {users[0].answer}</p>
             </div> 
         </div>
          
         <div className="profile-right-container">
-            <button>Posts</button>
-            <button>Map</button>
-            {users[0].posts.map((post) => {
-                return (
-                <UserPost key={post.id} post={post}/>
-                )
-            })}
+        <button
+            className="toggle-button"
+            onClick={handleClick}>
+                {toggle ? "Posts" : "Map"}
+        </button>
             
+            {/* if the toggle is true the map will show up 
+            else the users posts will be displayed */}
+
+            {toggle ? 
+            <h1>MAP COMPONENT GOES HERE</h1>
+            :
+            <UserPosts posts={users[0].posts}/>
+            }
+
         </div>
     </div>
     :    

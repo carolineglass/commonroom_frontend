@@ -1,13 +1,36 @@
 .app {
-  text-align: center;
+  /* text-align: center; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.nav-container {
-  height: 10vh;
+/* NOT USED YET  */
+
+.login {
+  height: 80vh;
   width: 100vw;
-  background-color: #C8CC92;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  /* border-style: dashed; */
+}
+
+.signup {
+  height: 80vh;
+  width: 100vw;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  /* border-style: dashed; */
+}
+
+/* NAV STUFF HERE */
+
+.nav-container {
+  height: 15vh;
+  width: 100vw;
+  /* background-color: #64a5e182; */
   /* margin: 2%; */
-  border-style: dashed;
+  /* border-style: dashed; */
 }
 
 .nav-list {
@@ -19,86 +42,101 @@
   padding: 3%;
 }
 
-.login {
-  background-color: coral;
-  height: 85vh;
-  width: 100vw;
-  text-align: center;
-  justify-content: center;
-  display: flex;
-  border-style: dashed;
-}
+/* HOMEPAGE HERE */
 
 .home {
   /* background-color: coral; */
-  background-image: url(https://www.yha.com.au/contentassets/28638aba427040a5adf4b431e57b9e78/simpsons.jpg);
+  background-image: url(https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2378&q=80);
   background-repeat: no-repeat;
   background-size: cover;
   /* background-size: 100% 100%; */
-  height: 85vh;
+  height:85vh;
   width: 100vw;
   text-align: center;
   justify-content: center;
   display: flex;
-  border-style: dashed;
-
+  /* border-style: dashed; */
 }
 
-.signup {
-  background-color: coral;
-  height: 85vh;
-  width: 100vw;
-  text-align: center;
-  justify-content: center;
-  display: flex;
-  border-style: dashed;
+.welcome-and-search-container > h1 {
+  color: rgb(130, 187, 187);
+  margin-top: 20%;
 }
 
-/* COUNTRY SEARCH */
+/* COUNTRY SEARCH IN HOMEPAGE*/
 
 .country-search-container {
-  /* background-color: #1D3461; */
   height: 15vh;
-  width: 100vw;
+  width: 30vw;
   text-align: center;
   justify-content: center;
   display: flex;
-  border-style: dashed;
 }
 
 .country-search-bar {
   text-align: center;
   justify-content: center;
   display: flex;
-  margin: 2%;
+  margin: 10%;
 }
 
-.country-search-input {
-  border-radius: 20%;
-  width: 300px;
+.country-search-bar > input {
+  /* border-radius: 10%; */
+  width: 500px;
   text-align: center;
+  font-size: 24px;
+  padding: 5%;
+  outline: none;
+}
+
+.country-page-container {
+  background-image: url(https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-size: 100% 100%; */
+  height:85vh;
+  width: 100vw;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  /* border-style: dashed; */
 }
 
 /* USER PROFILE CSS */
 
 .profile-container {
-  background-color: coral;
-  height: 80vh;
+  /* background-color: coral; */
+  background-image: url(https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60);
+  background-size: cover;
+  height: 85vh;
   width: 100vw;
   text-align: center;
   justify-content: center;
   display: flex;
-  border-style: dashed;
 }
 
 .profile-left-container {
-  border-style: dashed;
+  /* border-style: dashed; */
   width: 50%;
 }
 
 .profile-right-container {
-  border-style: dashed;
+  /* border-style: dashed; */
   width: 50%;
+  overflow: scroll;
+}
+
+.toggle-button {
+  font-size: 16px;
+  width: 20%;
+  margin-top: 5%;
+  padding: 10px;
+  background-color: rgba(221, 160, 221);
+  outline: none;
+}
+
+.toggle-button:hover {
+  background-color: rgb(130, 54, 130);
 }
 
 .user-img {
@@ -107,19 +145,38 @@
 }
 
 .username {
-  font-family: monospace;
+  color: rgb(5, 83, 152);
 }
 
 .user-bio {
-  border-style: dotted;
-  /* padding: 10%; */
-  margin-right: 30%;
-  /* margin-top: 10%; */
-  padding-top: 15%;
+  border-style: double;
+  border-radius: 50%;
+  background-color: rgba(95, 170, 227, 0.598);
+  padding: 5%;
+  /* margin-right: 30%; */
+  margin: 5% 30% 0% 10%;
 }
 
-/* POSTS  */
+/* PROFILE POSTS */
 
 .user-post-card {
-  border-style: dashed;
+  background-color: rgba(91, 160, 130);
+  border-style: double;
+  border-radius: 0%;
+  margin: 5%;
+  width: 90%;
+  box-shadow: 5px 10px #6a7479a8;
+}
+
+.post-countryname {
+  margin-right: 80%;
+  font-family: cursive;
+}
+
+.comments-container {
+  background-color: rgba(76, 215, 206, 0.379);
+}
+
+.comment {
+  border: solid;
 }
