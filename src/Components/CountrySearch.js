@@ -9,7 +9,7 @@ const CountrySearch = (props) => {
         //setting the searchTerm to what is typed in the search
     }
 
-    // send searched word up to app --> in app fine the country SEARCHTERM
+    // send searched word up to app --> in app find the country SEARCHTERM
     //in the array of FETCHED COUNTRIES and render that countries COUNTRYPAGE
 
     return (

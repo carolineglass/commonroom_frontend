@@ -1,29 +1,29 @@
-import React from 'react'
-import Comments from './Comments.js'
+import React, {useState} from 'react'
+import Comments from './Comments'
 
-const UserPost = ({post}) => {
+const CountryPost = (props) => {
+
+    let [post, setPost] = useState(props.post)
 
     let handleDelete = (e) => {
         fetch(`http://localhost:3000/posts/${post.id}`, {
             method: "DELETE"
         })
             .then(r => r.json())
-            .then(console.log())
-            // .then((deletedPost) => {
-            //     props.deleteFromPosts(deletedPost)
-            // })
+            .then((deletedPost) => {
+                props.deleteFromPosts(deletedPost)
+            })
     }
-
+ 
     return (
-
-        <div className="user-post-card">
+        <div className="country-post-card">
             <h3 className="post-countryname">{post.country.name}</h3>
 
             <p>
                 <img className="post-user-img" src={post.user.img} alt={post.user.username}/>
                 {post.user.username}
             </p>
-
+            
             <img className="post-img" src={post.img}/> 
             <h2>{post.title}</h2>
             <p>Category: {post.category}</p>
@@ -37,4 +37,4 @@ const UserPost = ({post}) => {
     )
 }
 
-export default UserPost;
+export default CountryPost;

@@ -21,8 +21,8 @@ const Comments = (props) => {
                 "accept": "application/json"
             },
             body: JSON.stringify({
-                comment,
-                user_id: 7,
+                comment: comment,
+                user_id: 10,
                 //fix this (not hard coded)
                 post_id: props.postId
                 })
@@ -31,6 +31,7 @@ const Comments = (props) => {
                 .then((fetchedComment) => {
                     setComments((prevComments) => {return [...prevComments, fetchedComment]})
                     setComment("")
+                    console.log(fetchedComment)
                 })
                     
         //FIGURE OUT with auth how to have the user_id in the post be set 
@@ -39,7 +40,7 @@ const Comments = (props) => {
 
     return (
         <>
-        <button onClick={handleToggle}>{toggle ? "Hide Comments" : "View Comments"}</button>
+        <button onClick={handleToggle}>{toggle ? "Hide" : "Comments"}</button>
         {toggle
         ?
         <div className="comments-container">
@@ -67,8 +68,6 @@ const Comments = (props) => {
         :
             null
         }
-        
-            
        </>
     )
 }

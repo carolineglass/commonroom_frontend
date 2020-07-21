@@ -17,8 +17,9 @@ const App = () => {
   //return value of useState is going to be an array of 2 
   //(1st is the initial state, 2nd is a function definition)
 
-  let [users, setUsers] = useState([])
+  let [user, setUser] = useState([])
   let [countries, setCountries] = useState([])
+
   //useEffect takes in 2 arguments 
     //1. a callback (annonymous arrow function ()=>{})
     //2. an array of dependencies (everytime something within this changes
@@ -27,14 +28,16 @@ const App = () => {
   //similar to componentDidUpdate when there is a dependency 
   //similar to componentDidMount when there is an empty array
   
-  console.log("USERS", users)
+  console.log("USER", user)
   console.log("COUNTRIES", countries)
 
+  //this fetch is hardcoded for ONE user - when implementing auth that user ID will
+  //be the ID of whoever has signed in
   useEffect(() => {
-    fetch("http://localhost:3000/users")
+    fetch("http://localhost:3000/users/9")
       .then(resp => resp.json())
-      .then((userArray) => {
-        setUsers(userArray)
+      .then((LoggedInUser) => {
+        setUser(LoggedInUser)
       })
   }, [])
 
@@ -69,11 +72,11 @@ const App = () => {
 
       {/* do the route this way if you have no props to send down */}
       <Route exact path="/profile">
-        <UserProfile users={users}/>
+        <UserProfile user={user}/>
       </Route>
 
       <Route exact path="/country">
-        <CountryPage country={countries}/>
+        <CountryPage country={countries} user={user}/>
       </Route>
 
       {/* do the route this way to include props in the component */}
