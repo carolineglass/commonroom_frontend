@@ -11,7 +11,7 @@ import Signup from './Components/Signup'
 import Home from './Components/Home'
 import CountryPage from './Components/CountryPage'
 
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, useParams} from 'react-router-dom'
 
 const App = () => {
   //return value of useState is going to be an array of 2 
@@ -19,20 +19,13 @@ const App = () => {
 
   let [user, setUser] = useState([])
   let [countries, setCountries] = useState([])
+  // countries is an array of ALL countries that goes to the home page (search)
 
-  //useEffect takes in 2 arguments 
-    //1. a callback (annonymous arrow function ()=>{})
-    //2. an array of dependencies (everytime something within this changes
-        // the callback gets ran)
+  // let [userPosts, setUserPosts] = useState([])
 
-  //similar to componentDidUpdate when there is a dependency 
-  //similar to componentDidMount when there is an empty array
-  
   console.log("USER", user)
   console.log("COUNTRIES", countries)
 
-  //this fetch is hardcoded for ONE user - when implementing auth that user ID will
-  //be the ID of whoever has signed in
   useEffect(() => {
     fetch("http://localhost:3000/users/9")
       .then(resp => resp.json())
@@ -44,50 +37,68 @@ const App = () => {
   useEffect(() => {
     fetch("http://localhost:3000/countries")
       .then(resp => resp.json())
-      .then((countryArray) => {
-        setCountries(countryArray)
+      .then((countriesArray) => {
+        setCountries(countriesArray)
       })
   }, [])
 
-  // let handleClick = (e) => {
-  
-        //FAMILIAR VERSION
-          // let copyOfUsers = [...users, "new user"]
-          // setUsers(copyOfUsers)
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/countries")
+  //     .then(resp => resp.json())
+  //     .then((countriesArray) => {
+  //       setCountries(countriesArray)
+  //     })
+  // }, [userPosts])
 
-        //PREFERRED VERSION  
-          // ** setUsers((prevUsers) => {return [...prevUsers, "new user"]}) **
+    //useEffect takes in 2 arguments 
+    //1. a callback (annonymous arrow function ()=>{})
+    //2. an array of dependencies (everytime something within this changes
+        // the callback gets ran)
 
-    //what is passed into setUsers OVERWRITES the original state in useState
-    //so you need to do the copy of the users and add the new one
-    //setUsers behaves like setState -> triggers a rerender
-    //setUsers is asynchronous
+
+    let renderCountry = (routerProps) => {
+      let countryId = parseInt(routerProps.match.params.id)
+      let foundCountry = 
+        countries.find(countryObj => countryObj.id === countryId)
+    
+      return (foundCountry ? 
+        <CountryPage 
+          country={foundCountry}
+          user={user}
+        />
+        : null) 
+      }
 
   return (
     <div className="app">
         <Nav />
 
       <div>
+
       <Switch>
+        <Route exact path="/profile">
+          <UserProfile 
+            user={user}
+            // userPosts={userPosts}
+            // deleteFromPosts={deleteFromPosts}
+            />
+        </Route>
 
-      {/* do the route this way if you have no props to send down */}
-      <Route exact path="/profile">
-        <UserProfile user={user}/>
-      </Route>
+        <Route path="/country/:id" 
+          render = {routerProps => renderCountry(routerProps)}
+        />
 
-      <Route exact path="/country">
-        <CountryPage country={countries} user={user}/>
-      </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
 
-      {/* do the route this way to include props in the component */}
-      <Route path="/login">
-        <Login />
-      </Route>
+        <Route exact path="/">
+          <Home countries={countries}/>
+        </Route>
 
-      <Route exact path="/" component={Home} />
-      <Route exact path="/signup" component={Signup} />
-
+        <Route exact path="/signup" component={Signup} />
       </Switch>
+
       </div>
 
     </div>

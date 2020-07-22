@@ -1,9 +1,38 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import UserPosts from './UserPosts'
 
 const UserProfile = ({user}) => {
 
+    let [userPosts, setUserPosts] = useState([])
     let [toggle, setToggle] = useState(false)
+
+    useEffect(() => {
+        fetch("http://localhost:3000/users/9")
+          .then(resp => resp.json())
+          .then((LoggedInUser) => {
+            setUserPosts(LoggedInUser.posts)
+          })
+      }, [])
+
+    let deleteFromPosts = (deletedPost) => {
+      let updatedPosts = userPosts.filter((post) => {
+          return post.id !== deletedPost.id}
+        )
+      setUserPosts(updatedPosts)
+    }
+
+    //FIX THIS IN THE MORNING -> Likes are not rendering without a refresh
+    console.log(userPosts)
+    let addNewLike = (newLike) => {
+        console.log(newLike)
+        let postId = newLike.post_id
+        let postToBeUpdated = userPosts.filter((post) => {
+            return post.id === postId}
+        )
+        // found the post in UserPosts that needs to be updated
+        // need to push the newLike into postToBeUpdated.post_likes array of {post_like OBJs}
+        // setUserPosts((prevUserPosts) => {return [...prevUserPosts, newLike]})
+    }
 
     let handleClick = (e) => {
         setToggle((prevToggle) => {return !prevToggle})
@@ -45,7 +74,12 @@ const UserProfile = ({user}) => {
             {toggle ? 
             <h1>MAP COMPONENT GOES HERE</h1>
             :
-            <UserPosts posts={user.posts}/>
+            <UserPosts
+                user={user}
+                posts={userPosts}
+                deleteFromPosts={deleteFromPosts}
+                addNewLike={addNewLike}
+                />
             }
 
         </div>

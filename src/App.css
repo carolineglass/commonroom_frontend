@@ -9,7 +9,7 @@
   background-image: url(https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1033&q=80);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 85vh;
+  height: 90vh;
   width: 100vw;
   text-align: center;
   justify-content: center;
@@ -29,7 +29,7 @@
 /* NAV STUFF HERE */
 
 .nav-container {
-  height: 15vh;
+  height: 10vh;
   width: 100vw;
   /* background-color: #64a5e182; */
   /* margin: 2%; */
@@ -53,7 +53,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   /* background-size: 100% 100%; */
-  height: 85vh;
+  height: 90vh;
   width: 100vw;
   text-align: center;
   justify-content: center;
@@ -98,7 +98,7 @@
   background-image: url(https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 85vh;
+  height: 90vh;
   width: 100vw;
   /* text-align: center;
   justify-content: center; */
@@ -111,7 +111,7 @@
   border: solid;
   width: 100vw;
   height: 15vh;
-  background-color: rgb(55, 151, 210);
+  background-color: rgb(178, 208, 227);
   text-align: center;
   justify-content: center;
   display: flex;
@@ -194,7 +194,7 @@
   /* background-color: coral; */
   background-image: url(https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60);
   background-size: cover;
-  height: 85vh;
+  height: 90vh;
   width: 100vw;
   text-align: center;
   justify-content: center;
@@ -235,19 +235,21 @@
 }
 
 .user-bio {
-  border-style: double;
+  border-style: solid;
   /* border-radius: 50%; */
-  background-color: rgba(95, 170, 227, 0.598);
+  background-color: rgb(95, 170, 227);
   padding: 5%;
   /* margin-right: 30%; */
-  margin: 5% 30% 0% 10%;
+  margin: 5% 30% 0% 5%;
+  width: 75%;
+  height: 55%;
 }
 
 /* PROFILE POSTS */
 
 .user-post-card {
   background-color: rgb(216, 140, 167);
-  border-style: double;
+  border-style: solid;
   width: 90%;
   margin: 2%;
 }
@@ -258,7 +260,7 @@
 }
 
 .comments-container {
-  background-color: rgba(76, 215, 206);
+  background-color: rgb(76, 194, 215);
 }
 
 .comment {
@@ -273,4 +275,6 @@
 
 .likes-comments-container > button {
   margin: 2%;
+  background-color: white;
+  border-color: white;
 }

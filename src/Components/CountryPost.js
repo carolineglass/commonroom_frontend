@@ -1,9 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Comments from './Comments'
 
-const CountryPost = (props) => {
-
-    let [post, setPost] = useState(props.post)
+const CountryPost = ({post, deleteFromPosts}) => {
 
     let handleDelete = (e) => {
         fetch(`http://localhost:3000/posts/${post.id}`, {
@@ -11,7 +9,7 @@ const CountryPost = (props) => {
         })
             .then(r => r.json())
             .then((deletedPost) => {
-                props.deleteFromPosts(deletedPost)
+                deleteFromPosts(deletedPost)
             })
     }
  
@@ -29,9 +27,9 @@ const CountryPost = (props) => {
             <p>Category: {post.category}</p>
             <p>{post.post}</p>
             <div className="likes-comments-container">
+                <button onClick={handleDelete} className="delete-post-button">❌</button>
                 <button style={{fontSize:"16px"}}>👍{post.post_likes.length} {""}</button>    
                 <Comments comments={post.comments} postId={post.id}/>
-                <button onClick={handleDelete} className="delete-post-button">❌</button>
             </div> 
         </div>
     )

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const AddPostForm = ({country, user}) => {
+const AddPostForm = ({country, user, addNewPost}) => {
     
     let [title, setTitle] = useState("")
     let [post, setPost] = useState("")
@@ -27,7 +27,7 @@ const AddPostForm = ({country, user}) => {
             })
                 .then(r => r.json())
                 .then((newPost) => {
-                    console.log(newPost)
+                    addNewPost(newPost)
                     // add the function that takes in the newPost and passed it up 
                     // to add to array of country posts
                     setTitle("")
@@ -53,10 +53,10 @@ const AddPostForm = ({country, user}) => {
                 <label>Choose a Category</label>
                 <select value={category} onChange={(e) => {setCategory(e.target.value)}}>
                     <option value="General">General</option>
-                    <option value="Recommendation">Recommendations</option>
+                    <option value="Recommendation">Recommendation</option>
                     <option value="Travel Buddy">Travel Buddy</option>
                     <option value="Food/Drink">Food/Drink</option>
-                    <option value="Rideshare">Rideshares</option>
+                    <option value="Rideshare">Rideshare</option>
                     <option value="For Sale">For Sale</option>
                     <option value="Activity">Activity</option>
                 </select>

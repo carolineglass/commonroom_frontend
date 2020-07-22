@@ -2,61 +2,77 @@ import React, {useState} from 'react'
 import CountryUser from './CountryUser'
 import CountryPost from './CountryPost'
 import AddPostForm from './AddPostForm'
+import CategoryFilter from './CategoryFilter'
 
 const CountryPage = ({country, user}) => {
-    //props for the country will be from App that was passed UP from Country Search
-    
-    // let [countryPosts, setCountryPosts] = useState([country[0].posts])
 
-    // console.log(countryPosts)
-    
-    let addNewPost = () => {
-        // setCountryPosts((prevCountryPosts) => {return [...prevCountryPosts, newPost]})
+    let [countryPosts, setCountryPosts] = useState(country.posts)
+    let [filterSearchTerm, setFilterSearchTerm] = useState("All")
+
+    let addNewPost = (newPost) => {
+        setCountryPosts((prevCountryPosts) => {return [newPost, ...prevCountryPosts]})
     }
 
     let deleteFromPosts = (deletedPost) => {
-        // console.log(deletedPost)
-        // let updatedPosts = countryPosts
-        // countryPosts.filter((post) => post.id !== deletedPost.id)
-
-        // setCountryPosts({...countryPosts, })
-        //filter out from the array of posts
+        let updatedPosts = countryPosts.filter((post) => {
+            return post.id !== deletedPost.id})
+        setCountryPosts(updatedPosts)
     }
 
-    //ASK ABOUT GETTING COUNTRY[0].posts --> saying 
-    //TypeError: Cannot read property 'posts' of undefined
-    
+    let changeFilterSearchTerm = (termFromFilter) => {
+        setFilterSearchTerm(termFromFilter)
+        filterByCategory()
+    }
+
+    let filterByCategory = () => {
+        let filteredPosts = countryPosts
+            if (filterSearchTerm !== 'All') {
+                filteredPosts = countryPosts.filter((post) => {
+                    return post.category === filterSearchTerm
+                })
+            }
+        // setCountryPosts(filteredPosts)
+        return filteredPosts
+    }
+
     return (
-        <>
-        {country[0]
-        ?
         <div className="country-page-container">
-            <div className="country-title">
-                <h1>{country[0].name}</h1>
-            </div>
-        <div className="country-users-posts-container"> 
-            <div className="country-users-container">
-                <h3>currently in {country[0].name}</h3>
-                {country[0].current_users.map(user => {
-                    return <CountryUser key={user.id} user={user}/>
-                })}
-            </div>
-            <div className="country-posts-container">
-                <h1>1. FILTERS</h1>
+                <div className="country-title">
+                    <h1>{country.name}</h1>
+                </div>
+            <div className="country-users-posts-container"> 
 
-                <AddPostForm user={user} country={country[0]}/>
+                <div className="country-users-container">
+                    <h3>currently in {country.name}</h3>
+                        {country.current_users.map(user => {
+                        return <CountryUser 
+                            key={user.id} 
+                            user={user}/>
+                        })}
+                </div>
 
-                {country[0].posts.map(post => {
-                    return <CountryPost key={post.id} post={post} deleteFromPosts={deleteFromPosts}/>
-                })}
-            </div>
-        </div> 
+                <div className="country-posts-container">
+                    <CategoryFilter 
+                        filterSearchTerm={filterSearchTerm}
+                        changeFilterSearchTerm={changeFilterSearchTerm}
+                        />
+
+                    <AddPostForm 
+                        user={user} 
+                        country={country} 
+                        addNewPost={addNewPost}
+                        />
+
+                    {filterByCategory().map(post => {
+                    return <CountryPost 
+                                key={post.id} 
+                                post={post} 
+                                deleteFromPosts={deleteFromPosts}
+                            />
+                    })}
+                </div>
+            </div> 
         </div>
-        :
-        null
-        }
-        
-        </>
     )
 }
 

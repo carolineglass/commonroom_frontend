@@ -1,11 +1,9 @@
 import React, {useState} from 'react'
 
-
-
 const CountryUser = ({user}) => {
 
     let handleClick = () => {
-
+        //Get this to route to the users profile
     }
  
     return (
