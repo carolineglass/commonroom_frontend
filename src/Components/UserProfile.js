@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import UserPosts from './UserPosts'
+import UserBio from './UserBio'
 
 const UserProfile = ({user}) => {
 
@@ -30,24 +31,7 @@ const UserProfile = ({user}) => {
     {user.country ?
     <div className="profile-container">
         <div className="profile-left-container">
-            <div className="user-bio">
-                <img className="user-img" 
-                    src={user.img}
-                    alt={user.full_name} 
-                    />
-                
-                    {/* add img source from database */}
-
-                <h1>{user.full_name}</h1>
-                <h3 className="username">{user.username}</h3>
-
-                <p>Currently in <strong>{user.country.name}</strong></p>
-                
-                <p>From <strong>{user.from}</strong></p>
-                <p>{user.age}</p>
-                <p><strong>Bio:</strong> {user.bio}</p>
-                <p><strong>Favorite Food:</strong> {user.answer}</p>
-            </div> 
+            <UserBio user={user} />
         </div>
          
         <div className="profile-right-container">

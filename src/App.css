@@ -192,9 +192,21 @@
 
 .delete-post-button {
   border: none;
-  background-color: white;
   outline: none;
 }
+
+.liked-button {
+  font-size: xx-large;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+}
+
+.like-button {
+  border-radius: 50%;
+  border: none;
+  outline: none;
+} 
 
 /* USER PROFILE CSS */
 
