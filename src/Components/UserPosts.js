@@ -1,7 +1,7 @@
 import React from 'react'
 import UserPost from './UserPost'
 
-const UserPosts = ({user, posts, deleteFromPosts, addNewLike}) => {
+const UserPosts = ({user, posts, deleteFromPosts}) => {
     
     return (
         <div>
@@ -12,7 +12,6 @@ const UserPosts = ({user, posts, deleteFromPosts, addNewLike}) => {
                     user={user}
                     post={post}
                     deleteFromPosts={deleteFromPosts}
-                    addNewLike={addNewLike}
                     />
                 )
                 })}

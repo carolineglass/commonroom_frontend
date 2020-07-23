@@ -1,13 +1,23 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import CountryUser from './CountryUser'
 import CountryPost from './CountryPost'
 import AddPostForm from './AddPostForm'
 import CategoryFilter from './CategoryFilter'
 
-const CountryPage = ({country, user}) => {
+const CountryPage = ({foundCountry, user}) => {
 
-    let [countryPosts, setCountryPosts] = useState(country.posts)
+    let [country, setCountry] = useState({})
+    let [countryPosts, setCountryPosts] = useState([])
     let [filterSearchTerm, setFilterSearchTerm] = useState("All")
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/countries/${foundCountry.id}`)
+          .then(resp => resp.json())
+          .then((countryInfo) => {
+            setCountry(countryInfo)
+            setCountryPosts(countryInfo.posts)
+          })
+      }, [])
 
     let addNewPost = (newPost) => {
         setCountryPosts((prevCountryPosts) => {return [newPost, ...prevCountryPosts]})
@@ -31,12 +41,14 @@ const CountryPage = ({country, user}) => {
                     return post.category === filterSearchTerm
                 })
             }
-        // setCountryPosts(filteredPosts)
         return filteredPosts
     }
 
     return (
-        <div className="country-page-container">
+        <>
+        {country.current_users 
+        ?
+            <div className="country-page-container">
                 <div className="country-title">
                     <h1>{country.name}</h1>
                 </div>
@@ -68,11 +80,17 @@ const CountryPage = ({country, user}) => {
                                 key={post.id} 
                                 post={post} 
                                 deleteFromPosts={deleteFromPosts}
+                                user={user}
                             />
                     })}
                 </div>
             </div> 
         </div>
+        :
+        null 
+        }
+        </>
+        
     )
 }
 

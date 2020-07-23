@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
+import { useHistory } from "react-router-dom";
 
 const CountryUser = ({user}) => {
 
-    let handleClick = () => {
-        //Get this to route to the users profile
-    }
+    let history = useHistory()
  
     return (
-        <div onClick={() => {console.log(user.id)}} className="country-user-card">
+        <div onClick={() => {history.push(`/profile/${user.id}`)}} className="country-user-card">
             <h3>
                 <img src={user.img} alt={user.full_name}/>
                 {user.username}

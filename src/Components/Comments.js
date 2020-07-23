@@ -22,8 +22,7 @@ const Comments = (props) => {
             },
             body: JSON.stringify({
                 comment: comment,
-                user_id: 10,
-                //fix this (not hard coded)
+                user_id: props.userId,
                 post_id: props.postId
                 })
             })

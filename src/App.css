@@ -17,6 +17,7 @@
   /* border-style: dashed; */
 }
 
+
 .signup {
   height: 85vh;
   width: 100vw;
@@ -43,6 +44,13 @@
 .nav-list > li {
   float: right;
   padding: 3%;
+}
+
+.nav-profile-img {
+  float: right;
+  width: 10%;
+  border-radius: 50%;
+  border: solid;
 }
 
 /* HOMEPAGE HERE */

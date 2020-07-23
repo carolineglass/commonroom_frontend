@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Comments from './Comments.js'
 import { useHistory } from "react-router-dom";
 
-const UserPost = ({user, post, deleteFromPosts, addNewLike}) => {
-
+const UserPost = ({user, post, deleteFromPosts}) => {
+    
     let history = useHistory()
+
+    let [likes, setLikes] = useState(post.post_likes)
 
     let handleDelete = (e) => {
         fetch(`http://localhost:3000/posts/${post.id}`, {
@@ -31,11 +33,11 @@ const UserPost = ({user, post, deleteFromPosts, addNewLike}) => {
             })
                 .then(r => r.json())
                 .then((newLike) => {
-                    addNewLike(newLike)
+                    setLikes((prevLikes) => {return [...prevLikes, newLike]})
                 })
-        //POST REQUEST TO MAKE A POST LIKE 
-        //addLike(newLike) in the .then to send to user profile 
     }
+
+    let hasMatch = Boolean(likes.find(obj=>{return obj.user_id === user.id}))
 
     return (
         <>
@@ -54,8 +56,13 @@ const UserPost = ({user, post, deleteFromPosts, addNewLike}) => {
             <p>{post.post}</p>
             <div className="likes-comments-container">
                 <button onClick={handleDelete} className="delete-post-button">❌</button>
-                <button onClick={handleLike} style={{fontSize:"16px"}}>👍{post.post_likes.length} {""}</button>    
-                <Comments comments={post.comments} postId={post.id}/>
+                <button onClick={handleLike} style={{fontSize:"16px"}}>👍</button> 
+                {likes.length} 
+                {hasMatch ? "IVE LIKED THIS" : "I HAVENT LIKED THIS"} 
+                <Comments 
+                    comments={post.comments} 
+                    postId={post.id}
+                    userId={user.id}/>
             </div> 
         </div>
         :

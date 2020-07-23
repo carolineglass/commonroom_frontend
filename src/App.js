@@ -19,6 +19,7 @@ const App = () => {
 
   let [user, setUser] = useState([])
   let [countries, setCountries] = useState([])
+  let [foundUser, setFoundUser] = useState({})
   // countries is an array of ALL countries that goes to the home page (search)
 
   // let [userPosts, setUserPosts] = useState([])
@@ -26,13 +27,13 @@ const App = () => {
   console.log("USER", user)
   console.log("COUNTRIES", countries)
 
-  useEffect(() => {
-    fetch("http://localhost:3000/users/9")
-      .then(resp => resp.json())
-      .then((LoggedInUser) => {
-        setUser(LoggedInUser)
-      })
-  }, [])
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/users/9")
+  //     .then(resp => resp.json())
+  //     .then((LoggedInUser) => {
+  //       setUser(LoggedInUser)
+  //     })
+  // }, [])
 
   useEffect(() => {
     fetch("http://localhost:3000/countries")
@@ -41,14 +42,6 @@ const App = () => {
         setCountries(countriesArray)
       })
   }, [])
-
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/countries")
-  //     .then(resp => resp.json())
-  //     .then((countriesArray) => {
-  //       setCountries(countriesArray)
-  //     })
-  // }, [userPosts])
 
     //useEffect takes in 2 arguments 
     //1. a callback (annonymous arrow function ()=>{})
@@ -63,15 +56,53 @@ const App = () => {
     
       return (foundCountry ? 
         <CountryPage 
-          country={foundCountry}
+          foundCountry={foundCountry}
           user={user}
         />
         : null) 
       }
 
+      // let renderProfile = (routerProps) => {
+        
+      //   let userId = parseInt(routerProps.match.params.id)
+        
+      //   fetch(`http://localhost:3000/users/${userId}`)
+      //     .then(resp => resp.json())
+      //     .then((user) => {
+      //         setFoundUser(user)
+      //     })
+
+      // return <UserProfile user={foundUser}/>
+      // }
+
+      let handleLogin = (username) => {
+        fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+              "content-type": "application/json",
+              "accept": "application/json"
+          },
+          body: JSON.stringify({
+              username
+              })
+          })
+              .then(r => r.json())
+              .then(handleResponse)
+      }
+
+      let handleResponse = (response) => {
+        setUser(response)
+      }
+
+      let handleLogOut = () => {
+        setUser({})
+      }
+
   return (
     <div className="app">
-        <Nav />
+        <Nav 
+          user={user}
+          handleLogOut={handleLogOut}/>
 
       <div>
 
@@ -79,21 +110,25 @@ const App = () => {
         <Route exact path="/profile">
           <UserProfile 
             user={user}
-            // userPosts={userPosts}
-            // deleteFromPosts={deleteFromPosts}
-            />
+          />
         </Route>
+
+        {/* routing to go to the user profile */}
+        {/* <Route path="/profile/:id" 
+          render= {routerProps => renderProfile(routerProps)} 
+        /> */}
 
         <Route path="/country/:id" 
           render = {routerProps => renderCountry(routerProps)}
         />
 
         <Route exact path="/login">
-          <Login />
+          <Login handleLogin={handleLogin}/>
         </Route>
 
         <Route exact path="/">
-          <Home countries={countries}/>
+          <Home 
+            countries={countries}/>
         </Route>
 
         <Route exact path="/signup" component={Signup} />

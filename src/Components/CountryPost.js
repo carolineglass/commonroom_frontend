@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Comments from './Comments'
 
-const CountryPost = ({post, deleteFromPosts}) => {
+const CountryPost = ({post, user, deleteFromPosts}) => {
+
+    let [likes, setLikes] = useState(post.post_likes)
 
     let handleDelete = (e) => {
         fetch(`http://localhost:3000/posts/${post.id}`, {
@@ -11,6 +13,24 @@ const CountryPost = ({post, deleteFromPosts}) => {
             .then((deletedPost) => {
                 deleteFromPosts(deletedPost)
             })
+    }
+
+    let handleLike = (e) => {
+        fetch("http://localhost:3000/post_likes", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                "accept": "application/json"
+            },
+            body: JSON.stringify({
+                user_id: user.id,
+                post_id: post.id
+                })
+            })
+                .then(r => r.json())
+                .then((newLike) => {
+                    setLikes((prevLikes) => {return [...prevLikes, newLike]})
+                })
     }
  
     return (
@@ -28,8 +48,11 @@ const CountryPost = ({post, deleteFromPosts}) => {
             <p>{post.post}</p>
             <div className="likes-comments-container">
                 <button onClick={handleDelete} className="delete-post-button">❌</button>
-                <button style={{fontSize:"16px"}}>👍{post.post_likes.length} {""}</button>    
-                <Comments comments={post.comments} postId={post.id}/>
+                <button onClick={handleLike} style={{fontSize:"16px"}}>👍{likes.length} {""}</button>    
+                <Comments 
+                    comments={post.comments} 
+                    postId={post.id}
+                    userId={user.id}/>
             </div> 
         </div>
     )

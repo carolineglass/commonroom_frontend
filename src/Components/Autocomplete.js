@@ -109,15 +109,18 @@ export class Autocomplete extends Component {
     }
 
     return (
-      <React.Fragment>
-        <input
-          type="search"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
-        />
+      <div className="country-search-container">
+        <div className="country-search-bar">
+            <input
+                type="search"
+                onChange={onChange}
+                onKeyDown={onKeyDown}
+                value={userInput}
+                placeholder="Search a Country"
+            />
         {suggestionsListComponent}
-      </React.Fragment>
+        </div>
+    </div>
     );
   }
 }

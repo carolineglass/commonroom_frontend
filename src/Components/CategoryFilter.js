@@ -8,7 +8,7 @@ const CategoryFilter = ({changeFilterSearchTerm, filterSearchTerm}) => {
 
     return (
         <div>
-            <h3>Choose a Category!</h3>
+            <h3>Filter by Category!</h3>
             <select value={filterSearchTerm} onChange={handleFilter}>
                 <option value="All">All</option>
                 <option value="General">General</option>
