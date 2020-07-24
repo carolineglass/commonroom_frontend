@@ -70,7 +70,8 @@ const UserPost = ({user, post, deleteFromPosts}) => {
                 {post.user.username}
             </p>
 
-            <img className="post-img" src={post.img}/> 
+            <img className="post-img" src={post.img}/>
+            <p>{post.date_created}</p> 
             <h2>{post.title}</h2>
             <p>Category: {post.category}</p>
             <p>{post.post}</p>

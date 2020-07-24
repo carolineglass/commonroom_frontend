@@ -63,7 +63,7 @@ const AddPostForm = ({country, user, addNewPost}) => {
 
                 <br/>
 
-                <input
+                <textarea 
                 type="text"
                 placeholder="Write Post"
                 name="post"

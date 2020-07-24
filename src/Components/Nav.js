@@ -23,10 +23,7 @@ const Nav = ({user, handleLogOut}) => {
                 <li><NavLink to="/signup">Signup</NavLink></li>
             </>
             }
-                    <li><NavLink to="/">Home</NavLink></li>
-
-                     
-                     
+                <li><NavLink to="/">Home</NavLink></li>
             </ul>
         </div>
     )

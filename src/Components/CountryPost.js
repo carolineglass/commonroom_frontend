@@ -62,7 +62,8 @@ const CountryPost = ({post, user, deleteFromPosts}) => {
             </p>
             
             <img className="post-img" src={post.img}/> 
-            <h2>{post.title}</h2>
+            <p>{post.date_created}</p>
+            <h2>{post.title}</h2> 
             <p>Category: {post.category}</p>
             <p>{post.post}</p>
             <div className="likes-comments-container">
