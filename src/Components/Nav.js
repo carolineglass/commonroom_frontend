@@ -9,9 +9,12 @@ const Nav = ({user, handleLogOut}) => {
 
             {user.full_name ? 
             <>
-                <li><NavLink to="/profile">
+                <li><NavLink to={`/profile/${user.id}`}>
+                
                 <img className="nav-profile-img" src={user.img} alt={user.full_name} />
+
                 </NavLink></li>
+
                 <li onClick={() => handleLogOut()}><NavLink to="/login">Logout</NavLink></li>
             </>
             :

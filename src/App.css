@@ -226,6 +226,10 @@
   width: 40%;
 }
 
+.edit-bio-form > input {
+  margin: 1%;
+}
+
 .profile-right-container {
   /* border-style: dashed; */
   width: 60%;

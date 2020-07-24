@@ -11,6 +11,13 @@ const Comments = (props) => {
         setToggle((prevToggle) => {return !prevToggle})
     )
 
+    let deleteComment = (deletedComment) => {
+        let updatedComments = comments.filter((comment) => {
+            return comment.id !== deletedComment.id}
+          )
+        setComments(updatedComments)
+    }
+
     let handleSubmit = (e) => {
         e.preventDefault() 
         
@@ -32,9 +39,6 @@ const Comments = (props) => {
                     setComment("")
                     console.log(fetchedComment)
                 })
-                    
-        //FIGURE OUT with auth how to have the user_id in the post be set 
-        //to the user that is signed in! 
         }
 
     return (
@@ -44,7 +48,14 @@ const Comments = (props) => {
         ?
         <div className="comments-container">
         {comments.map((comment) => {
-            return <Comment key={comment.id} comment={comment}/>
+            return <Comment 
+                key={comment.id} 
+                comment={comment}
+                setComments={setComments}
+                postId={props.postId}
+                postUserId={props.postUserId}
+                userId={props.userId}
+                deleteComment={deleteComment}/>
         })}
     
             <form onSubmit={handleSubmit}>

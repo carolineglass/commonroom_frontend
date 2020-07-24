@@ -3,6 +3,8 @@ import Comments from './Comments.js'
 import { useHistory } from "react-router-dom";
 
 const UserPost = ({user, post, deleteFromPosts}) => {
+
+    console.log(post.user.id)
     
     let history = useHistory()
 
@@ -98,6 +100,7 @@ const UserPost = ({user, post, deleteFromPosts}) => {
 
                 <Comments 
                     comments={post.comments} 
+                    postUserId={post.user.id}
                     postId={post.id}
                     userId={user.id}/>
             </div> 

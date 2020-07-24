@@ -19,7 +19,7 @@ const App = () => {
 
   let [user, setUser] = useState([])
   let [countries, setCountries] = useState([])
-  let [foundUser, setFoundUser] = useState({})
+  let [selectedUser, setSelectedUser] = useState({})
   // countries is an array of ALL countries that goes to the home page (search)
 
   // let [userPosts, setUserPosts] = useState([])
@@ -62,18 +62,20 @@ const App = () => {
         : null) 
       }
 
-      // let renderProfile = (routerProps) => {
+      let renderProfile = (routerProps) => {
         
-      //   let userId = parseInt(routerProps.match.params.id)
-        
-      //   fetch(`http://localhost:3000/users/${userId}`)
-      //     .then(resp => resp.json())
-      //     .then((user) => {
-      //         setFoundUser(user)
-      //     })
-
-      // return <UserProfile user={foundUser}/>
-      // }
+        let userId = parseInt(routerProps.match.params.id)
+        // let foundUser = {}
+        // fetch(`http://localhost:3000/users/${userId}`)
+        //   .then(resp => resp.json())
+        //   .then((fetchedUser) => {
+        //       foundUser = fetchedUser
+        //       // setSelectedUser(user)
+              
+        //   })
+          return <UserProfile selectedUserId={userId} user={user} countries={countries} setUser={setUser}/>
+       
+      }
 
       let handleLogin = (username) => {
         fetch("http://localhost:3000/login", {
@@ -107,16 +109,18 @@ const App = () => {
       <div>
 
       <Switch>
-        <Route exact path="/profile">
+        {/* <Route exact path="/profile/:id">
           <UserProfile 
             user={user}
+            setUser={setUser}
+            countries={countries}
           />
-        </Route>
+        </Route> */}
 
         {/* routing to go to the user profile */}
-        {/* <Route path="/profile/:id" 
+        <Route path="/profile/:id" 
           render= {routerProps => renderProfile(routerProps)} 
-        /> */}
+        />
 
         <Route path="/country/:id" 
           render = {routerProps => renderCountry(routerProps)}

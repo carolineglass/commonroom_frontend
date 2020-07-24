@@ -97,9 +97,11 @@ const CountryPost = ({post, user, deleteFromPosts}) => {
             <span>{" "}{likes.length}</span>
     
                 <Comments 
-                    comments={post.comments} 
+                    comments={post.comments}
+                    postUserId={post.user.id} 
                     postId={post.id}
                     userId={user.id}/>
+                
             </div> 
         </div>
     )

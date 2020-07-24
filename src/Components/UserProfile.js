@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import UserPosts from './UserPosts'
 import UserBio from './UserBio'
 
-const UserProfile = ({user}) => {
+const UserProfile = ({user, countries, setUser, selectedUserId}) => {
 
     let [userPosts, setUserPosts] = useState([])
+    let [foundUser, setFoundUser] = useState({})
     let [toggle, setToggle] = useState(false)
 
     useEffect(() => {
@@ -13,6 +14,12 @@ const UserProfile = ({user}) => {
           .then((LoggedInUser) => {
             setUserPosts(LoggedInUser.posts)
           })
+
+          fetch(`http://localhost:3000/users/${selectedUserId}`)
+            .then(resp => resp.json())
+            .then((fetchedUser) => {
+                setFoundUser(fetchedUser)
+            })
       }, [])
 
     let deleteFromPosts = (deletedPost) => {
@@ -25,35 +32,77 @@ const UserProfile = ({user}) => {
     let handleClick = (e) => {
         setToggle((prevToggle) => {return !prevToggle})
     }
+    
+    console.log("USER AND SELECTEDUSER", user.id, selectedUserId)
 
     return (
     <>
-    {user.country ?
-    <div className="profile-container">
-        <div className="profile-left-container">
-            <UserBio user={user} />
-        </div>
-         
-        <div className="profile-right-container">
-        <button className="toggle-button" onClick={handleClick}>
-            {toggle ? "Posts" : "Map"}
-        </button>
+    {user.country && selectedUserId 
+    ?
+        <>
+        {user.id === selectedUserId   
+        ? 
+    
+            <div className="profile-container">
+                <div className="profile-left-container">
+                    <UserBio
+                        user={user}
+                        countries={countries}
+                        setUser={setUser} 
+                        foundUser={foundUser}
+                        selectedUserId={selectedUserId}/>
+                </div>
+                
+                <div className="profile-right-container">
+                <button className="toggle-button" onClick={handleClick}>
+                    {toggle ? "Posts" : "Map"}
+                </button>
+                    
+                    {/* if the toggle is true the map will show up 
+                    else the users posts will be displayed */}
+
+                    {toggle ? 
+                    <h1>MAP COMPONENT GOES HERE</h1>
+                    :
+                    <UserPosts
+                        user={user}
+                        posts={userPosts}
+                        deleteFromPosts={deleteFromPosts}
+                        />
+                    }
+
+                </div>
+            </div>
+    
+        :
+            <div className="profile-container">
+                <div className="profile-left-container">
+                    <UserBio
+                        foundUser={foundUser} 
+                        user={user}
+                        countries={countries}
+                        setUser={setUser} />
+                </div>
             
-            {/* if the toggle is true the map will show up 
-            else the users posts will be displayed */}
+                <div className="profile-right-container">
+                <button className="toggle-button" onClick={handleClick}>
+                    {toggle ? "Posts" : "Map"}
+                </button>
 
-            {toggle ? 
-            <h1>MAP COMPONENT GOES HERE</h1>
-            :
-            <UserPosts
-                user={user}
-                posts={userPosts}
-                deleteFromPosts={deleteFromPosts}
-                />
-            }
+                {toggle ? 
+                <h1>MAP COMPONENT GOES HERE</h1>
+                :
+                <UserPosts
+                    user={user}
+                    posts={userPosts}
+                    deleteFromPosts={deleteFromPosts}
+                    />
+                }
 
-        </div>
-    </div>
+                </div>
+            </div>
+        }
+        </>
     :    
     null  
     }
