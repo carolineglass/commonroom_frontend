@@ -6,6 +6,8 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
 
     let [userPosts, setUserPosts] = useState([])
     let [foundUser, setFoundUser] = useState({})
+    let [foundUserPosts, setFoundUserPosts] = useState([])
+    let [foundUserCountry, setFoundUserCountry] = useState("")
     let [toggle, setToggle] = useState(false)
 
     useEffect(() => {
@@ -19,6 +21,8 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
             .then(resp => resp.json())
             .then((fetchedUser) => {
                 setFoundUser(fetchedUser)
+                setFoundUserCountry(fetchedUser.country.name)
+                setFoundUserPosts(fetchedUser.posts)
             })
       }, [])
 
@@ -32,24 +36,23 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
     let handleClick = (e) => {
         setToggle((prevToggle) => {return !prevToggle})
     }
-    
-    console.log("USER AND SELECTEDUSER", user.id, selectedUserId)
+
+    console.log("USERPOSTS",userPosts)
 
     return (
     <>
-    {user.country && selectedUserId 
+    {user.country && selectedUserId
     ?
         <>
         {user.id === selectedUserId   
         ? 
-    
             <div className="profile-container">
+
                 <div className="profile-left-container">
                     <UserBio
                         user={user}
                         countries={countries}
                         setUser={setUser} 
-                        foundUser={foundUser}
                         selectedUserId={selectedUserId}/>
                 </div>
                 
@@ -57,10 +60,6 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
                 <button className="toggle-button" onClick={handleClick}>
                     {toggle ? "Posts" : "Map"}
                 </button>
-                    
-                    {/* if the toggle is true the map will show up 
-                    else the users posts will be displayed */}
-
                     {toggle ? 
                     <h1>MAP COMPONENT GOES HERE</h1>
                     :
@@ -68,17 +67,19 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
                         user={user}
                         posts={userPosts}
                         deleteFromPosts={deleteFromPosts}
+                        foundUser={foundUser}
+                        foundUserPosts={foundUserPosts}
+                        selectedUserId={selectedUserId}
                         />
                     }
-
                 </div>
             </div>
-    
         :
             <div className="profile-container">
                 <div className="profile-left-container">
                     <UserBio
-                        foundUser={foundUser} 
+                        foundUser={foundUser}
+                        foundUserCountry={foundUserCountry} 
                         user={user}
                         countries={countries}
                         setUser={setUser} />
@@ -93,12 +94,14 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
                 <h1>MAP COMPONENT GOES HERE</h1>
                 :
                 <UserPosts
+                    foundUser={foundUser}
+                    foundUserPosts={foundUserPosts}
+                    selectedUserId={selectedUserId}
                     user={user}
                     posts={userPosts}
                     deleteFromPosts={deleteFromPosts}
                     />
                 }
-
                 </div>
             </div>
         }

@@ -7,7 +7,6 @@ import Nav from './Components/Nav'
 
 import UserProfile from './Components/UserProfile'
 import Login from './Components/Login'
-import Signup from './Components/Signup'
 import Home from './Components/Home'
 import CountryPage from './Components/CountryPage'
 
@@ -62,7 +61,7 @@ const App = () => {
         : null) 
       }
 
-      let renderProfile = (routerProps) => {
+    let renderProfile = (routerProps) => {
         
         let userId = parseInt(routerProps.match.params.id)
         // let foundUser = {}
@@ -73,7 +72,11 @@ const App = () => {
         //       // setSelectedUser(user)
               
         //   })
-          return <UserProfile selectedUserId={userId} user={user} countries={countries} setUser={setUser}/>
+        return <UserProfile 
+            selectedUserId={userId} 
+            user={user} 
+            countries={countries} 
+            setUser={setUser}/>
        
       }
 
@@ -89,11 +92,7 @@ const App = () => {
               })
           })
               .then(r => r.json())
-              .then(handleResponse)
-      }
-
-      let handleResponse = (response) => {
-        setUser(response)
+              .then((resp) => {setUser(resp)})
       }
 
       let handleLogOut = () => {
@@ -105,19 +104,9 @@ const App = () => {
         <Nav 
           user={user}
           handleLogOut={handleLogOut}/>
-
       <div>
 
       <Switch>
-        {/* <Route exact path="/profile/:id">
-          <UserProfile 
-            user={user}
-            setUser={setUser}
-            countries={countries}
-          />
-        </Route> */}
-
-        {/* routing to go to the user profile */}
         <Route path="/profile/:id" 
           render= {routerProps => renderProfile(routerProps)} 
         />
@@ -135,11 +124,9 @@ const App = () => {
             countries={countries}/>
         </Route>
 
-        <Route exact path="/signup" component={Signup} />
       </Switch>
 
       </div>
-
     </div>
   );
 }

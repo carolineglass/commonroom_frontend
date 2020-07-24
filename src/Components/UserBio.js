@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const UserBio = ({user, countries, setUser, foundUser, selectedUserId}) => {
+const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUserCountry}) => {
 
     let [toggle, setToggle] = useState(false)
     let [currently, setCurrently] = useState(user.country.id)
@@ -38,20 +38,23 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId}) => {
                 })
     }
 
-    return (
+    console.log("FOUNDUSERCOUNTRY", foundUser)
 
-        <div className="user-bio">
-            {toggle
+    return (
+    <div className="user-bio">
+    
+    {selectedUserId === user.id
+    ?
+        <>
+        {toggle
             ?
                 <>
-                <img className="user-img" 
-                    src={user.img}
-                    alt={user.full_name} 
-                    /> 
+                <img className="user-img" src={user.img} alt={user.full_name}/> 
                 <br/>
                 <button>change profile picture</button>
                 <h1>{user.full_name}</h1>
                 <h3 className="username">{user.username}</h3>
+
                 <form className="edit-bio-form" onSubmit={handleSubmit}>
                     <label>Age:</label> {" "}
                     <input type="number" 
@@ -85,32 +88,55 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId}) => {
                 </>
             :
                 <>
-                <img className="user-img" 
-                    src={user.img}
-                    alt={user.full_name} 
-                    />
+                <img className="user-img" src={user.img} alt={user.full_name} />
 
                 <h1>{user.full_name}</h1>
+
                 <h3 className="username">{user.username}</h3>
+
                 <p>{user.age}</p>
+
                 <p>Currently in <strong>{user.country.name}</strong></p>
                 
                 <p>From <strong>{user.from}</strong></p>
                 
                 <p>Bio: <strong>{user.bio}</strong></p>
+
                 <p>Favorite Food:<strong>{user.answer}</strong></p>
 
                 {/* ternary for the edit button to only show up if the selected user === logged in */}
                 
-                {selectedUserId === user.id
-                ?
+                {/* {selectedUserId === user.id
+                ? */}
                 <button onClick={handleToggle}>Edit</button>
-                :
-                null
-                }
+                {/* // :
+                // null
+                // } */}
                 
                 </>
             }
+            </>
+        :
+        <>
+        <img className="user-img" src={foundUser.img} alt={foundUser.full_name} />
+
+        <h1>{foundUser.full_name}</h1>
+
+        <h3 className="username">{foundUser.username}</h3>
+
+        <p>{foundUser.age}</p>
+
+        <p>Currently in <strong>{foundUserCountry}</strong></p>
+        
+        <p>From <strong>{foundUser.from}</strong></p>
+        
+        <p>Bio: <strong>{foundUser.bio}</strong></p>
+
+        <p>Favorite Food:<strong>{foundUser.answer}</strong></p>
+        </>
+        
+        }
+            
         </div> 
     )
 }
