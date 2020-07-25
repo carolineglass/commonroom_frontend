@@ -7,6 +7,10 @@ const Home = ({countries}) => {
 
     let history = useHistory()
 
+    let renderCountryName = (state, val) => {
+      return (state.name.toLowerCase().indexOf(val.toLowerCase()) !== -1)
+    }
+
     // let countryArray = countries.map((country) => {return country.name})
 
     return (
@@ -17,6 +21,8 @@ const Home = ({countries}) => {
 
             <Auto
               countries={countries}
+              renderCountryName={renderCountryName}
+              history={history}
             />
             {/* {countries.map((country) => {
               return <div onClick={() => {history.push(`/country/${country.id}`)}}>

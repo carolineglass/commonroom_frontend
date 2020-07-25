@@ -1,64 +1,47 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { Component } from 'react';
+import Autocomplete from 'react-autocomplete';
 
-const Auto = ({countries}) => {
+class Auto extends Component {
 
-  let [display, setDisplay] = useState(false)
-  let [search, setSearch] = useState("")
-  let wrapperRef = useRef(null)
+  state = { val: '' };
 
-  let setCountry = (country) => {
-    setSearch(country.name)
-    setDisplay(false)
+  handleSubmit = (e) => {
+    let countrySelected = this.props.countries.filter((countryObj) => {
+      return countryObj.name === this.state.val
+    })
+    this.props.history.push(`/country/${countrySelected[0].id}`)
   }
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside)
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
-
-  let handleClickOutside = (e) => {
-    let {current: wrap} = wrapperRef
-    if (wrap && !wrap.contains(e.target)) {
-      setDisplay(false)
-    }
-  }
-
-  return (
-    <div>
-      <input 
-        id="auto" 
-        type="text" 
-        onClick={() => setDisplay(!display)} 
-        placeholder="Search Country"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+  render() {
+ 
+    return (
+      <div className="autocomplete-wrapper">
+        <Autocomplete
+          placeholder="Search a Country"
+          value={this.state.val}
+          items={this.props.countries}
+          getItemValue={item => item.name}
+          shouldItemRender={this.props.renderCountryName}
+          renderMenu={item => (
+            <div className="dropdown">
+              {item}
+            </div>
+          )}
+          renderItem={(item, isHighlighted) =>
+            <div className={`item ${isHighlighted ? 'selected-item' : ''}`}>
+              {item.name}
+            </div>
+          }
+          onChange={(event, val) => this.setState({ val })}
+          onSelect={val => this.setState({ val })}
+          inputProps={
+            { placeholder: 'Search a Country' }
+          }
         />
-        
-        {display && (
-          <div className="auto-container">
-            {countries
-            .filter(({name}) => name.indexOf(search) > -1)
-            .map((country, idx) => {
-              return (
-                <div 
-                  ref={wrapperRef}
-                  onClick={() => setCountry(country)} 
-                  className="option"
-                  key={idx}
-                  tabIndex="0">
-                  <span>
-                    {country.name}
-                  </span>
-                </div>
-              )
-            })}
-          </div>
-        )}
-    </div>
-  );
+        <button type="submit" onClick={this.handleSubmit}>Let's Go!</button>
+      </div>
+    );
+  }
 }
 
 export default Auto;

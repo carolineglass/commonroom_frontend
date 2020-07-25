@@ -58,7 +58,8 @@
 }
 
 .welcome-and-search-container > h1 {
-  margin-top: 20%;
+  margin-top: 30%;
+  margin-bottom: 10%;
   color: rgb(238, 149, 149);
   font-size: 75px;
 }
@@ -292,3 +293,63 @@
   background-color: white;
   border-color: white;
 }
+
+/* AUTOCOMPLETE - HOME STYLING */
+
+.autocomplete-wrapper {
+  width: 400px;
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-wrapper > div {
+  width: 100%;
+}
+
+.autocomplete-wrapper input {
+  border: 2px solid rgb(13, 63, 63);
+  padding: 12px 15px;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.autocomplete-wrapper input:focus {
+  border-color: rgb(13, 63, 63);
+  box-shadow: none;
+  outline: none;
+}
+
+.autocomplete-wrapper .dropdown {
+  width: 100%;
+  padding: 12px 15px;
+  text-align: center;
+  max-height: 280px;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #8bbfd2;
+  border: 2px solid rgb(13, 63, 63);
+  border-top: none;
+}
+
+.autocomplete-wrapper .item  {
+  display: block;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 15px;
+}
+
+.autocomplete-wrapper .item.selected-item {
+  background-color: #3f669d;
+  color: #FAFBFC;
+}
+
+.autocomplete-wrapper .item:hover {
+  background-color: #3f669d;
+  color: #FAFBFC;
+}
+
+.autocomplete-wrapper > button {
+  font-size: x-large;
+}
+
