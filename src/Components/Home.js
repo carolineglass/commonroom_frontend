@@ -1,28 +1,28 @@
 import React from 'react'
-import CountrySearch from './CountrySearch'
+// import CountrySearch from './CountrySearch'
 import { useHistory } from "react-router-dom";
-import Autocomplete from "./Autocomplete";
+import Auto from "./Auto";
 
-const Home = (props) => {
+const Home = ({countries}) => {
 
     let history = useHistory()
 
-    let countryNameArray = props.countries.map((country) => {return country.name})
+    // let countryArray = countries.map((country) => {return country.name})
 
     return (
         <div className="home">
           <div className="welcome-and-search-container">
-            <h1>Welcome to CommonRoom</h1>
+            <h1>CommonRoom</h1>
             {/* <CountrySearch /> */}
 
-            <Autocomplete
-              suggestions={countryNameArray}
+            <Auto
+              countries={countries}
             />
-            {props.countries.map((country) => {
+            {/* {countries.map((country) => {
               return <div onClick={() => {history.push(`/country/${country.id}`)}}>
                 {country.name}
               </div>
-            })}
+            })} */}
           </div>
         </div>
     )

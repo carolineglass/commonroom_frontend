@@ -10,6 +10,10 @@ const CountryPage = ({foundCountry, user}) => {
     let [countryPosts, setCountryPosts] = useState([])
     let [filterSearchTerm, setFilterSearchTerm] = useState("All")
 
+    let addNewPost = (newPost) => {
+        setCountryPosts((prevCountryPosts) => {return [newPost, ...prevCountryPosts]})
+    }
+
     useEffect(() => {
         fetch(`http://localhost:3000/countries/${foundCountry.id}`)
           .then(resp => resp.json())
@@ -18,10 +22,6 @@ const CountryPage = ({foundCountry, user}) => {
             setCountryPosts(countryInfo.posts)
           })
       }, [])
-
-    let addNewPost = (newPost) => {
-        setCountryPosts((prevCountryPosts) => {return [newPost, ...prevCountryPosts]})
-    }
 
     let deleteFromPosts = (deletedPost) => {
         let updatedPosts = countryPosts.filter((post) => {
@@ -75,14 +75,18 @@ const CountryPage = ({foundCountry, user}) => {
                         addNewPost={addNewPost}
                         />
 
-                    {filterByCategory().map(post => {
+                    {countryPosts.length === 0 ? 
+                        <h2>Be the first to post!</h2>
+                    :
+                    filterByCategory().map(post => {
                     return <CountryPost 
                                 key={post.id} 
                                 post={post} 
                                 deleteFromPosts={deleteFromPosts}
                                 user={user}
                             />
-                    })}
+                    })
+                }
                 </div>
             </div> 
         </div>

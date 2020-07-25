@@ -5,7 +5,7 @@ const Nav = ({user, handleLogOut}) => {
     
     return (
         <div className="nav-container">
-            <ul className="nav-list">
+            <nav className="nav-list">
 
             {user.full_name ? 
             <>
@@ -23,7 +23,8 @@ const Nav = ({user, handleLogOut}) => {
             </>
             }
                 <li><NavLink to="/">Home</NavLink></li>
-            </ul>
+
+            </nav>
         </div>
     )
 }

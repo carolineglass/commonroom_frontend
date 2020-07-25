@@ -2,7 +2,6 @@ import React from 'react'
 import UserPost from './UserPost'
 
 const UserPosts = ({user, posts, deleteFromPosts, foundUserPosts, foundUser, selectedUserId}) => {
-    console.log(posts)
     
     return (
         <div>
