@@ -15,6 +15,7 @@ class Auto extends Component {
   render() {
  
     return (
+      <>
       <div className="autocomplete-wrapper">
         <Autocomplete
           placeholder="Search a Country"
@@ -38,8 +39,11 @@ class Auto extends Component {
             { placeholder: 'Search a Country' }
           }
         />
-        <button type="submit" onClick={this.handleSubmit}>Let's Go!</button>
-      </div>
+        </div>
+        <div className="search-button-div">
+          <button type="submit" onClick={this.handleSubmit}>Search</button>
+        </div>
+       </>
     );
   }
 }

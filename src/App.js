@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 
 import './App.css';
 
-import Nav from './Components/Nav'
+import Navigation from './Components/Navigation'
 
 import UserProfile from './Components/UserProfile'
 import Login from './Components/Login'
@@ -100,11 +100,10 @@ const App = () => {
       }
 
   return (
-    <div className="app">
-        <Nav 
+    <>
+      <Navigation 
           user={user}
           handleLogOut={handleLogOut}/>
-      <div>
 
       <Switch>
         <Route path="/profile/:id" 
@@ -121,13 +120,12 @@ const App = () => {
 
         <Route exact path="/">
           <Home 
-            countries={countries}/>
+            countries={countries}
+            user={user}/>
         </Route>
 
       </Switch>
-
-      </div>
-    </div>
+      </>
   );
 }
 

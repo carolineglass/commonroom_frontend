@@ -1,42 +1,73 @@
 .app {
   /* text-align: center; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 2px dashed;
+  /* border: 2px dashed; */
 }
 
 .login-container {
-  background-image: url(https://images.unsplash.com/photo-1437846972679-9e6e537be46e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60);
+  background-image: url(https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1498&q=80);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 90vh;
+  height: 120vh;
   width: 100%;
   text-align: center;
   justify-content: center;
   display: flex;
-  /* border-style: dashed; */
+  margin-top: 100px;
+  padding: 30px;
 }
 
 /* NAV STUFF HERE */
 
-.nav-container {
-  height: 10vh;
-  width: 100%;
-  background-color: #64a5e182;
-  border: 2px dashed;
+.nav-div {
+    margin-top: 0;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    width: 100%;
 }
 
-.nav-list {
-  list-style-type: none;
-}
-
-.nav-list > li {
+.nav-div a {
+  display: block;
   float: right;
-  padding: 20px;
+  padding: 27.5px;
+  margin-right: 10px;
+  font-size: 25px;
+  color: rgb(101, 124, 182);
+  text-decoration: none;
+}
+
+/* .nav-link {
+  color: black;
+  font-size: 24px;
+} */
+
+.nav-div a:hover {
+  color: rgb(23, 81, 113);
+  background-color: rgba(155, 202, 220, 0.365);
+  border-radius: 50px;
+  text-decoration: none;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-logo {
+  height: 100px;
+  /* width: 100px; */
+  margin-left: 30px;
+}
+
+a.nav-img {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* margin-right: 20%; */
 }
 
 .nav-profile-img {
-  /* float: right; */
-  width: 10%;
+  width: 75px;
   border-radius: 50%;
   border: solid;
 }
@@ -44,50 +75,34 @@
 /* HOMEPAGE HERE */
 
 .home {
-  /* background-color: coral; */
-  background-image: url(https://images.unsplash.com/photo-1498855926480-d98e83099315?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);
+  background-image: url(https://cdn.dribbble.com/users/1477343/screenshots/6483721/havapeima-01.jpg);
+  /* background-image: url(https://img.theculturetrip.com/768x432/wp-content/uploads/2018/01/thailand-travellers-cover-01.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-size: 100% 100%; */
-  height: 90vh;
+  background-size: 100% 100%;
+  height: 120vh;
   width: 100%;
   text-align: center;
   justify-content: center;
   display: flex;
-  border-style: dashed;
+  margin-top: 100px;
 }
 
 .welcome-and-search-container > h1 {
-  margin-top: 30%;
-  margin-bottom: 10%;
-  color: rgb(238, 149, 149);
-  font-size: 75px;
+  margin-top: 340px;
+  /* margin-bottom: 10%; */
+  color: rgb(51, 104, 116);
+  font-size: 60px;
 }
 
-/* COUNTRY SEARCH IN HOMEPAGE*/
-
-.country-search-container {
-  height: 15vh;
-  width: 30vw;
-  text-align: center;
-  justify-content: center;
-  display: flex;
+.welcome-and-search-container > h2 {
+  color: rgb(232, 240, 189);
+  margin-bottom: 50px;
 }
 
-.country-search-bar {
-  text-align: center;
-  justify-content: center;
-  display: flex;
-  margin: 10%;
-}
-
-.country-search-bar > input {
-  border-radius: 40%;
-  width: 500px;
-  text-align: center;
-  font-size: 24px;
-  padding: 5%;
-  outline: none;
+/* search button to the side of the input */
+.search-button-div {
+  /* display: inline; */
 }
 
 /* COUNTRY PAGE */
@@ -96,35 +111,49 @@
   /* background-image: url(https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60);
   background-repeat: no-repeat;
   background-size: cover; */
-  height: 90vh;
+  height: 100vh;
   width: 100%;
-  border: 2px dashed;
+  /* border: 2px dashed; */
   /* text-align: center;
   justify-content: center; */
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
 }
 
 .country-title {
-  font-size: x-large;
-  border: 2px dashed;
   width: 100%;
-  height: 10vh;
+  height: 400px;
+  /* position: fixed; */
   text-align: center;
   justify-content: center;
   display: flex;
+  background-image: url(https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1623&q=80);
+}
+
+.country-title h1 {
+  font-size: 100px;
+  padding: 90px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .country-users-posts-container {
+  margin-top: 50px;
   text-align: center;
   justify-content: center;
   display: flex;
   flex-direction: row;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.filter-and-add {
+  
 }
 
 .post-form-container {
-  border: 2px dashed;
-  margin: 5%;
+  /* border: 2px dashed; */
+  margin: 20px;
   background: rgb(232, 159, 159);
 }
 
@@ -292,6 +321,7 @@
   margin: 2%;
   background-color: white;
   border-color: white;
+  outline: none;
 }
 
 /* AUTOCOMPLETE - HOME STYLING */
@@ -308,11 +338,14 @@
 
 .autocomplete-wrapper input {
   border: 2px solid rgb(13, 63, 63);
-  padding: 12px 15px;
-  font-size: 20px;
+  /* padding: 12px 15px; */
+  padding: 12px 24px;
+  font-size: 24px;
   width: 100%;
   text-align: center;
+  border-radius: 50px;
 }
+
 
 .autocomplete-wrapper input:focus {
   border-color: rgb(13, 63, 63);
@@ -322,7 +355,8 @@
 
 .autocomplete-wrapper .dropdown {
   width: 100%;
-  padding: 12px 15px;
+  /* padding: 12px 15px; */
+  padding: 12px 24px;
   text-align: center;
   max-height: 280px;
   overflow: hidden;
@@ -330,6 +364,7 @@
   background-color: #8bbfd2;
   border: 2px solid rgb(13, 63, 63);
   border-top: none;
+  border-radius: 50px;
 }
 
 .autocomplete-wrapper .item  {
@@ -342,14 +377,21 @@
 .autocomplete-wrapper .item.selected-item {
   background-color: #3f669d;
   color: #FAFBFC;
+  border-radius: 50px;
 }
 
 .autocomplete-wrapper .item:hover {
   background-color: #3f669d;
   color: #FAFBFC;
+  border-radius: 50px;
 }
 
 .autocomplete-wrapper > button {
   font-size: x-large;
 }
 
+        
+
+
+
+  

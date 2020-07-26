@@ -64,6 +64,7 @@ const CountryPage = ({foundCountry, user}) => {
                 </div>
 
                 <div className="country-posts-container">
+                    <div className="filter-and-add">
                     <CategoryFilter 
                         filterSearchTerm={filterSearchTerm}
                         changeFilterSearchTerm={changeFilterSearchTerm}
@@ -74,6 +75,7 @@ const CountryPage = ({foundCountry, user}) => {
                         country={country} 
                         addNewPost={addNewPost}
                         />
+                    </div>
 
                     {countryPosts.length === 0 ? 
                         <h2>Be the first to post!</h2>
