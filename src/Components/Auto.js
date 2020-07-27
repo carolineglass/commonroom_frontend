@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Autocomplete from 'react-autocomplete';
+import Search from "../images/search-img.png"
 
 class Auto extends Component {
 
@@ -41,7 +42,9 @@ class Auto extends Component {
         />
         </div>
         <div className="search-button-div">
-          <button type="submit" onClick={this.handleSubmit}>Search</button>
+          <button type="submit" onClick={this.handleSubmit}>
+            <img src={Search} />
+          </button>
         </div>
        </>
     );

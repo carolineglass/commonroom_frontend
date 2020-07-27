@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import addPost from '../images/addPost.png'
 
 const AddPostForm = ({country, user, addNewPost}) => {
     
@@ -6,6 +7,11 @@ const AddPostForm = ({country, user, addNewPost}) => {
     let [post, setPost] = useState("")
     let [category, setCategory] = useState("General")
     let [img, setImg] = useState("")
+    let [toggle, setToggle] = useState(false)
+
+    let handleToggle = (e) => {
+        setToggle((prevToggle) => {return !prevToggle})
+    }
 
     let handleSubmit = (e) => {
         e.preventDefault() 
@@ -38,7 +44,10 @@ const AddPostForm = ({country, user, addNewPost}) => {
 
     return (
        <div className="post-form-container">
-           <h3>Add a Post!</h3>
+           <img className="add-post" onClick={handleToggle} src={addPost} />
+
+           {toggle ?
+            
             <form onSubmit={handleSubmit}>
                 <input
                 type="text"
@@ -88,6 +97,9 @@ const AddPostForm = ({country, user, addNewPost}) => {
                 value="Post"
                 />
            </form>
+           :
+           null
+           }
        </div> 
     );
 }

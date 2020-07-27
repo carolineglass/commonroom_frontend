@@ -1,14 +1,22 @@
 import React, {useState} from 'react'
+import filterImg from '../images/filter-img.png'
 
 const CategoryFilter = ({changeFilterSearchTerm, filterSearchTerm}) => {
+
+    let [toggle, setToggle] = useState(false)
 
     let handleFilter = (e) => {
         changeFilterSearchTerm(e.target.value)
     }
 
+    let handleToggle = (e) => {
+        setToggle((prevToggle) => {return !prevToggle})
+    }
+
     return (
-        <div>
-            <h3>Filter by Category!</h3>
+        <div className="filter-container">
+            <img className="filter-img" onClick={handleToggle} src={filterImg} />
+            {toggle ?
             <select value={filterSearchTerm} onChange={handleFilter}>
                 <option value="All">All</option>
                 <option value="General">General</option>
@@ -19,6 +27,9 @@ const CategoryFilter = ({changeFilterSearchTerm, filterSearchTerm}) => {
                 <option value="For Sale">For Sale</option>
                 <option value="Activity">Activity</option>
             </select>
+            :
+            null
+            }
         </div>
     )
 }

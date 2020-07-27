@@ -48,47 +48,46 @@ const CountryPage = ({foundCountry, user}) => {
         <>
         {country.current_users 
         ?
-            <div className="country-page-container">
-                <div className="country-title">
-                    <h1>{country.name}</h1>
-                </div>
-            <div className="country-users-posts-container"> 
-
-                <div className="country-users-container">
-                    <h3>currently in {country.name}</h3>
-                        {country.current_users.map(user => {
-                        return <CountryUser 
-                            key={user.id} 
-                            user={user}/>
-                        })}
-                </div>
-
-                <div className="country-posts-container">
-                    <div className="filter-and-add">
-                    <CategoryFilter 
-                        filterSearchTerm={filterSearchTerm}
-                        changeFilterSearchTerm={changeFilterSearchTerm}
-                        />
-
-                    <AddPostForm 
-                        user={user} 
-                        country={country} 
-                        addNewPost={addNewPost}
-                        />
+        <div className="country-page-container">
+            <div className="country-title">
+                <h1>{country.name}</h1>
+            </div>
+            
+            <div className="users-filter-posts">
+                    <div className="country-users-container">
+                            <h3>Travelers in {country.name}</h3>
+                                {country.current_users.map(user => {
+                                return <CountryUser 
+                                    key={user.id} 
+                                    user={user}/>
+                                })}
                     </div>
-
-                    {countryPosts.length === 0 ? 
-                        <h2>Be the first to post!</h2>
-                    :
-                    filterByCategory().map(post => {
-                    return <CountryPost 
-                                key={post.id} 
-                                post={post} 
-                                deleteFromPosts={deleteFromPosts}
-                                user={user}
+                <div className="country-users-posts-container"> 
+                    <div className="filter-and-add">
+                        <AddPostForm 
+                            user={user} 
+                            country={country} 
+                            addNewPost={addNewPost}
                             />
-                    })
-                }
+                        <CategoryFilter 
+                            filterSearchTerm={filterSearchTerm}
+                            changeFilterSearchTerm={changeFilterSearchTerm}
+                            />
+                    </div>
+                        <div className="country-posts-container">
+                            {countryPosts.length === 0 ? 
+                                <h2>Be the first to post!</h2>
+                            :
+                            filterByCategory().map(post => {
+                            return <CountryPost 
+                                        key={post.id} 
+                                        post={post} 
+                                        deleteFromPosts={deleteFromPosts}
+                                        user={user}
+                                    />
+                            })
+                            }
+                        </div>
                 </div>
             </div> 
         </div>

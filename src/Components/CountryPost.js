@@ -54,56 +54,67 @@ const CountryPost = ({post, user, deleteFromPosts}) => {
  
     return (
         <div className="country-post-card">
-            <h3 className="post-countryname">{post.country.name}</h3>
+                <h3 className="post-countryname">{post.country.name}</h3>
 
-            <p>
-                <img className="post-user-img" src={post.user.img} alt={post.user.username}/>
-                {post.user.username}
-            </p>
-            
-            <img className="post-img" src={post.img}/> 
-            <p>{post.date_created}</p>
-            <h2>{post.title}</h2> 
-            <p>Category: {post.category}</p>
-            <p>{post.post}</p>
-            <div className="likes-comments-container">
+                <div className="img-and-content-container"> 
 
-                {user.id === post.user.id
-                ?
-                <button onClick={handleDelete} className="delete-post-button">❌</button>
-                :
-                null
-                }
-                
+                    <div className="post-img-container">
+                        <img className="post-img" src={post.img}/> 
+                        <p className="post-user-container">
+                            <img className="post-user-img" src={post.user.img} alt={post.user.username}/>
+                            {post.user.username}
+                        </p>
+                    </div>
 
-                {hasMatch 
-                ? 
-                    <>
-                     <button 
-                     onClick={handleDislike} 
-                     className="liked-button">
-                     👍</button>
-                     <span>CLICK TO UNLIKE</span>
-                    </>
-                 : 
-                    <>      
-                    <button 
-                    onClick={handleLike} 
-                    className="like-button">
-                    👍</button>
-                    <span>CLICK TO LIKE</span>
-                    </>
-                }
+                    <div className="post-content-container">
+                        
+                        <p>{post.date_created}</p>
+                        <h2>{post.title}</h2> 
+                        <p>Category: {post.category}</p>
+                        <p>{post.post}</p>
+
+                        <div className="likes-comments-container">
+
+                            {user.id === post.user.id
+                            ?
+                            <button onClick={handleDelete} className="delete-post-button">❌</button>
+                            :
+                            null
+                            }
+
+                            {hasMatch 
+                            ? 
+                                <>
+                                <button 
+                                onClick={handleDislike} 
+                                className="liked-button">
+                                👍</button>
+                                <span>CLICK TO UNLIKE</span>
+                                </>
+                            : 
+                                <>      
+                                <button 
+                                onClick={handleLike} 
+                                className="like-button">
+                                👍</button>
+                                <span>CLICK TO LIKE</span>
+                                </>
+                            }
+
+                            <span>{" "}{likes.length}</span>
+
+                            <Comments 
+                                comments={post.comments}
+                                postUserId={post.user.id} 
+                                postId={post.id}
+                                userId={user.id}/>
+
+                            </div>
+                    </div>  
+ 
+                </div> 
+
                 
-            <span>{" "}{likes.length}</span>
-    
-                <Comments 
-                    comments={post.comments}
-                    postUserId={post.user.id} 
-                    postId={post.id}
-                    userId={user.id}/>
-                
-            </div> 
         </div>
     )
 }
