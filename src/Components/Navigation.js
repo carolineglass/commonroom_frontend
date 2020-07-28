@@ -25,19 +25,13 @@ const Navigation = ({user, handleLogOut}) => {
                 <NavLink to="/" 
                     activeClassName="nav-active"
                     className="nav-link">Search</NavLink>
-            
-                
                 </>
             :
             <>
                 <NavLink to="/login" 
                     activeClassName="nav-active"
                     >Login/Signup</NavLink>
-
-                <NavLink to="/" 
-                    activeClassName="nav-active"
-                    >Search</NavLink>
-                </>
+            </>
             }
         </div>
     )

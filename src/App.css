@@ -6,16 +6,25 @@
 }
 
 .login-container {
-  background-image: url(https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1498&q=80);
+  background-image: url(https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+  /* background-image: url(https://www.irishtimes.com/polopoly_fs/1.4068289.1572538782!/image/image.jpg_gen/derivatives/box_620_330/image.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
-  height: 120vh;
+  /* background-size: 100% 100%; */
+  height: 90vh;
   width: 100%;
   text-align: center;
   justify-content: center;
-  display: flex;
+  /* display: flex; */
   margin-top: 100px;
-  padding: 30px;
+  padding: 100px 600px 500px 600px;
+}
+
+.welcome-message {
+  font-size: 75px;
+  margin-bottom: 60px;
+  font-family: 'Ranchers', cursive;
+  color: white;
 }
 
 /* NAV STUFF HERE */
@@ -45,6 +54,7 @@
   color: black;
   font-size: 24px;
 } */
+
 
 .nav-div a:hover {
   color: rgb(23, 81, 113);
@@ -76,12 +86,13 @@ a.nav-img {
 /* HOMEPAGE HERE */
 
 .home {
-  background-image: url(https://cdn.dribbble.com/users/1477343/screenshots/6483721/havapeima-01.jpg);
-  /* background-image: url(https://img.theculturetrip.com/768x432/wp-content/uploads/2018/01/thailand-travellers-cover-01.jpg); */
+  /* background-image: url(https://cdn.dribbble.com/users/1477343/screenshots/6483721/havapeima-01.jpg); */
+  
+  background-image: url(https://img.theculturetrip.com/768x432/wp-content/uploads/2018/01/thailand-travellers-cover-01.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-size: 100% 100%;
-  height: 120vh;
+  height: 90vh;
   width: 100%;
   text-align: center;
   justify-content: center;
@@ -89,22 +100,54 @@ a.nav-img {
   margin-top: 100px;
 }
 
+.welcome-and-search-container {
+  margin-top: 200px;
+  margin-bottom: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .welcome-and-search-container > h1 {
-  margin-top: 340px;
+  /* margin-top: 250px; */
   /* margin-bottom: 10%; */
-  color: rgb(51, 104, 116);
+  color: rgb(255, 255, 255);
   font-size: 60px;
+  font-family: 'Ranchers', cursive;
+  text-shadow: 7px 1px 2px rgb(51, 104, 116);
 }
 
 .welcome-and-search-container > h2 {
-  color: rgb(232, 240, 189);
-  margin-bottom: 50px;
+  color:rgb(51, 104, 116);
+  font-size: 40px;
+  /* margin-bottom: 50px; */
+  font-family: 'Ranchers', cursive;
 }
 
-/* search button to the side of the input
+.search-row {
+  display: flex;
+  margin-left: 70px;
+}
+
+.map-search-button {
+  outline: none !important;
+  background: transparent;
+  border: none;
+  padding-left: 20px;
+}
+
+.map-search-button:hover {
+  transform: scale(1.5);
+}
+
 .search-button-div {
-  /* display: inline; */
-/* } */
+  display: inline;
+  margin: 5px;
+}
+
+.search-button-div img {
+  width: 60px;
+}
 
 /* COUNTRY PAGE */
 
@@ -123,22 +166,31 @@ a.nav-img {
 }
 
 .country-title {
-  width: 100%;
+  width: 100vw;
   height: 500px;
-  /* position: fixed; */
   text-align: center;
   justify-content: center;
   display: flex;
-  background-image: url(./images/aus-img.jpg);
+  background-image: url(./images/aus-img2.jpg);
+  background-color: rgba(137, 210, 223, 0.372);
   background-repeat: no-repeat;
   background-size: cover;
   background-size: 100% 100%;
 }
 
+.country-title-div {
+  /* background-color: rgba(0, 0, 0, 0.564); */
+  margin: 50px;
+  padding: 10px;
+  border-radius: 50px;
+}
+
 .country-title h1 {
-  font-size: 100px;
-  padding: 90px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;
+  /* padding: 90px; */
+  /* font-family: 'Ranchers', cursive; */
+  color: rgb(255, 255, 255);
+  /* text-shadow: 10px 1px 2px rgb(0, 0, 0); */
 }
 
 .country-users-posts-container {
@@ -155,39 +207,67 @@ a.nav-img {
 }
 
 .filter-and-add {
-  background-color: rgb(155, 213, 208);
-  /* margin-left: 100px;
-  margin-right: 100px; */
+  /* border: solid 1px black; */
+  /* background-color: rgb(62, 154, 171); */
+  /* margin-left: 300px; */
+  margin-right: 320px;
   display: flex;
-  /* flex-direction: row; */
-  justify-content: end;
-  /* text-align: center; */
+  border-radius: 50px;
+  flex-direction: row;
+  padding-left: 20px;
 }
 
 .filter-container {
-  /* background-color: hotpink; */
-  /* padding: 20px; */
+  /* padding-left: 400px; */
   margin: 5px;
-}
-
-.filter-img {
-  width: 60px;
-  padding: 5px;
+  cursor: pointer;
 }
 
 .post-form-container {
+  padding-left: 20px;
   margin: 5px;
-  /* background: rgb(232, 159, 159); */
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.post-form-container .post-button {
+  background-color: #7a99c4;
+  height: 20%;
+  width: 30%;
+  margin-left: 150px;
+  padding: 5px;
+}
+
+.post-form-container .post-button:hover {
+  background-color: #8bbfd2;
+}
+
+.post-form-container input {
+  border-radius: 50px;
+  margin: 5px;
+  padding: 6px;
+  border: 1px solid rgb(0, 0, 0);
+  outline: none;
+  text-align: center;
+}
+
+.textarea {
+  width: 400px;
+  margin: 15px;
+  height: 100px;
 }
 
 .add-post {
-  width: 60px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-items: center;
 }
 
 .country-users-container {
-  /* border: 1px gray solid; */
-  background-color: rgb(230, 208, 204);
-  border-radius: 30px;;
+  /* border: 2px solid rgb(0, 0, 0); */
+  /* background-color: rgb(238, 171, 89); */
+  /* border-radius: 30px; */
   width: 20%;
   height: 80vh;
   margin: 30px;
@@ -198,14 +278,22 @@ a.nav-img {
 
 .country-users-container > h3 {
   margin-top: 20px;
+  font-family: 'Ranchers', cursive;
+  font-size: 36px;
   /* background-color: rgb(235, 221, 64); */
   /* border: 2px dashed; */
 }
 
 .country-user-card {
-  /* border: 1px gray solid;
-  background-color: rgba(192, 223, 237, 0.345); */
-  margin: 5px;
+  border: 1px rgb(0, 0, 0) solid;
+  background-color: rgb(255, 153, 0);
+  box-shadow: 5px 7px rgb(255, 0, 0);
+  margin: 20px;
+}
+
+.country-user-card:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .country-user-card > h3 {
@@ -226,6 +314,10 @@ a.nav-img {
 
 /* COUNTRY POSTS */
 
+.post-content-container {
+  width: 70%;
+}
+
 .post-countryname {
   padding-top: 20px;
   padding-left: 30px;
@@ -238,16 +330,17 @@ a.nav-img {
   /* border: 1px solid gray; */
   height: 80vh;
   overflow: scroll;
-  background-color: rgb(31, 47, 108);
+  /* background-color: rgb(31, 47, 108); */
 }
 
 .country-post-card {
-  background-color: rgb(200, 238, 240);
+  background-color: white;
   /* border-radius: 10px; */
-  margin: 5%;
-  width: 80%;
+  margin: 50px;
+  /* width: 80%; */
   /* height: 200px; */
   box-shadow: 6px 12px rgb(242, 255, 0);
+  border: 2px black solid;
   display: flex;
   flex-direction: column;
   padding-left: 10px;
@@ -256,6 +349,7 @@ a.nav-img {
 .img-and-content-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 .post-user-container {
@@ -270,6 +364,12 @@ a.nav-img {
 
 .post-img-container {
   padding: 10px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
 }
 
 .post-img-container > img {
@@ -285,62 +385,69 @@ a.nav-img {
 }
 
 .liked-button {
-  font-size: xx-large;
   border-radius: 50%;
   border: none;
-  outline: none;
+  outline: none !important;
 }
 
 .like-button {
   border-radius: 50%;
   border: none;
-  outline: none;
+  outline: none !important;
 } 
+
+.liked-button:hover {
+  transform: scale(1.5);
+}
+
+.like-button:hover {
+  transform: scale(1.5);
+}
 
 /* USER PROFILE CSS */
 
 .profile-container {
-  /* background-color: coral; */
-  /* background-image: url(https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60);
-  background-size: cover; */
-  height: 90vh;
-  width: 100%;
-  text-align: center;
-  justify-content: center;
-  display: flex;
+  background-image: url(https://i.pinimg.com/originals/9e/7b/47/9e7b47982ee1b58fef26717182b4b28c.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    /* text-align: center;
+    justify-content: center; */
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
 }
 
 .profile-left-container {
-  border: 2px dashed;
+  text-align: center;
+  justify-content: center;
+  /* border: 2px dashed; */
+  margin-top: 70px;
+  margin-left: 100px;
+  /* margin: 100px; */
   width: 40%;
 }
 
 .edit-bio-form > input {
-  margin: 1%;
+  margin: 2%;
 }
 
 .profile-right-container {
-  border: 2px dashed;
-  width: 60%;
+  border-radius: 30px;
+  margin-top: 100px;
+  margin-right: 100px;
+  /* border: 1px solid gray; */
+  height: 80vh;
   overflow: scroll;
-}
-
-.toggle-button {
-  font-size: 16px;
-  width: 20%;
-  margin-top: 5%;
-  padding: 10px;
-  background-color: rgba(221, 160, 221);
-  outline: none;
-}
-
-.toggle-button:hover {
-  background-color: rgb(130, 54, 130);
+  /* background-color: rgb(31, 47, 108); */
 }
 
 .user-img {
-  width: 30%;
+  width: 50%;
   border-radius: 50%;
+  margin-bottom: 10%;
 }
 
 .username {
@@ -348,23 +455,29 @@ a.nav-img {
 }
 
 .user-bio {
-  border-style: solid;
-  /* border-radius: 50%; */
-  background-color: rgb(95, 170, 227);
-  padding: 5%;
+  /* border: 10px solid coral; */
+  border-radius: 30px;
+  /* background-color: white; */
+  padding: 50px;
   /* margin-right: 30%; */
-  margin: 5% 30% 0% 5%;
-  width: 75%;
-  height: 55%;
+  /* margin: 5% 30% 0% 5%; */
+  /* width: 75%; */
+  /* height: 55%; */
 }
 
 /* PROFILE POSTS */
 
 .user-post-card {
-  background-color: rgb(208, 155, 213);
-  border-style: solid;
-  width: 100%;
-  margin: 2%;
+  background-color: white;
+  /* border-radius: 10px; */
+  margin: 5%;
+  /* width: 80%; */
+  /* height: 200px; */
+  box-shadow: 6px 12px rgb(242, 255, 0);
+  border: 2px black solid;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
 }
 
 .post-countryname {
@@ -388,9 +501,8 @@ a.nav-img {
 
 .likes-comments-container > button {
   margin: 2%;
+  outline: none !important;
   background-color: white;
-  border-color: white;
-  outline: none;
 }
 
 /* AUTOCOMPLETE - HOME STYLING */
@@ -407,7 +519,6 @@ a.nav-img {
 
 .autocomplete-wrapper input {
   border: 2px solid rgb(13, 63, 63);
-  /* padding: 12px 15px; */
   padding: 12px 24px;
   font-size: 24px;
   width: 400px;
@@ -459,14 +570,7 @@ a.nav-img {
   border-radius: 50px;
 }
 
-.search-button-div {
-  display: inline;
-  margin: 5px;
-}
 
-.search-button-div img {
-  width: 50px;
-}
 
 
   

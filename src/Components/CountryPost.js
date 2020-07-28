@@ -88,20 +88,36 @@ const CountryPost = ({post, user, deleteFromPosts}) => {
                                 <button 
                                 onClick={handleDislike} 
                                 className="liked-button">
-                                👍</button>
-                                <span>CLICK TO UNLIKE</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" 
+                                class="icon icon-tabler icon-tabler-heart" 
+                                width="50" height="50" viewBox="0 0 24 24" stroke-width="3" 
+                                stroke="#F44336" fill="none" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z"/>
+                                <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" />
+                                </svg></button>
+                                {/* <span>CLICK TO UNLIKE</span> */}
                                 </>
                             : 
                                 <>      
                                 <button 
                                 onClick={handleLike} 
                                 className="like-button">
-                                👍</button>
-                                <span>CLICK TO LIKE</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" 
+                                class="icon icon-tabler icon-tabler-heart" 
+                                width="50" height="50" viewBox="0 0 24 24" stroke-width="0.5" 
+                                stroke="#F44336" fill="none" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z"/>
+                                <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" />
+                                </svg></button>
+                                {/* <span>CLICK TO LIKE</span> */}
                                 </>
                             }
 
-                            <span>{" "}{likes.length}</span>
+                            {/* {likes.length} */}
 
                             <Comments 
                                 comments={post.comments}

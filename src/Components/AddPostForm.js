@@ -44,11 +44,20 @@ const AddPostForm = ({country, user, addNewPost}) => {
 
     return (
        <div className="post-form-container">
-           <img className="add-post" onClick={handleToggle} src={addPost} />
+           {/* <img className="add-post" onClick={handleToggle} src={addPost} /> */}
+
+            <svg className="add-post" onClick={handleToggle} xmlns="http://www.w3.org/2000/svg" 
+            class="icon icon-tabler icon-tabler-circle-plus" width="40" height="40" viewBox="0 0 24 24" 
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <circle cx="12" cy="12" r="9" />
+            <line x1="9" y1="12" x2="15" y2="12" />
+            <line x1="12" y1="9" x2="12" y2="15" />
+            </svg>
 
            {toggle ?
             
-            <form onSubmit={handleSubmit}>
+            <form className="add-post" onSubmit={handleSubmit}>
                 <input
                 type="text"
                 placeholder="Title"
@@ -57,9 +66,16 @@ const AddPostForm = ({country, user, addNewPost}) => {
                 onChange={(e) => {setTitle(e.target.value)}}
                 />
 
-                <br/>          
-
-                <label>Choose a Category</label>
+                <input
+                type="text"
+                placeholder="Image Url"
+                name="img"
+                value={img}
+                onChange={(e) => {setImg(e.target.value)}}
+                />
+        
+                {/* <div className="category-form"> */}
+                <label>Choose Category</label>
                 <select value={category} onChange={(e) => {setCategory(e.target.value)}}>
                     <option value="General">General</option>
                     <option value="Recommendation">Recommendation</option>
@@ -69,10 +85,10 @@ const AddPostForm = ({country, user, addNewPost}) => {
                     <option value="For Sale">For Sale</option>
                     <option value="Activity">Activity</option>
                 </select>
+                {/* </div> */}
 
-                <br/>
-
-                <textarea 
+                <textarea
+                className="textarea" 
                 type="text"
                 placeholder="Write Post"
                 name="post"
@@ -80,19 +96,8 @@ const AddPostForm = ({country, user, addNewPost}) => {
                 onChange={(e) => {setPost(e.target.value)}}
                 />
 
-                <br/>
-
-                <input
-                type="text"
-                placeholder="Image Url"
-                name="img"
-                value={img}
-                onChange={(e) => {setImg(e.target.value)}}
-                />
-
-                <br/>
-
                 <input 
+                className="post-button"
                 type="submit"
                 value="Post"
                 />

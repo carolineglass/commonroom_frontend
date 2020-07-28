@@ -37,7 +37,49 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
         setToggle((prevToggle) => {return !prevToggle})
     }
 
-    console.log("USERPOSTS",userPosts)
+        //     <div className="country-page-container">
+        //     <div className="country-title">
+        //         <h1>{country.name}</h1>
+        //     </div>
+            
+        //     <div className="users-filter-posts">
+        //             <div className="country-users-container">
+        //                     <h3>Travelers in {country.name}</h3>
+        //                         {country.current_users.map(user => {
+        //                         return <CountryUser 
+        //                             key={user.id} 
+        //                             user={user}/>
+        //                         })}
+        //             </div>
+        //         <div className="country-users-posts-container"> 
+        //             <div className="filter-and-add">
+        //                 <AddPostForm 
+        //                     user={user} 
+        //                     country={country} 
+        //                     addNewPost={addNewPost}
+        //                     />
+        //                 <CategoryFilter 
+        //                     filterSearchTerm={filterSearchTerm}
+        //                     changeFilterSearchTerm={changeFilterSearchTerm}
+        //                     />
+        //             </div>
+        //                 <div className="country-posts-container">
+        //                     {countryPosts.length === 0 ? 
+        //                         <h2>Be the first to post!</h2>
+        //                     :
+        //                     filterByCategory().map(post => {
+        //                     return <CountryPost 
+        //                                 key={post.id} 
+        //                                 post={post} 
+        //                                 deleteFromPosts={deleteFromPosts}
+        //                                 user={user}
+        //                             />
+        //                     })
+        //                     }
+        //                 </div>
+        //         </div>
+        //     </div> 
+        // </div>
 
     return (
     <>
@@ -55,14 +97,8 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
                         setUser={setUser} 
                         selectedUserId={selectedUserId}/>
                 </div>
-                
                 <div className="profile-right-container">
-                <button className="toggle-button" onClick={handleClick}>
-                    {toggle ? "Posts" : "Map"}
-                </button>
-                    {toggle ? 
-                    <h1>MAP COMPONENT GOES HERE</h1>
-                    :
+                
                     <UserPosts
                         user={user}
                         posts={userPosts}
@@ -71,11 +107,11 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
                         foundUserPosts={foundUserPosts}
                         selectedUserId={selectedUserId}
                         />
-                    }
                 </div>
             </div>
         :
             <div className="profile-container">
+                
                 <div className="profile-left-container">
                     <UserBio
                         foundUser={foundUser}
@@ -86,13 +122,7 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
                 </div>
             
                 <div className="profile-right-container">
-                <button className="toggle-button" onClick={handleClick}>
-                    {toggle ? "Posts" : "Map"}
-                </button>
 
-                {toggle ? 
-                <h1>MAP COMPONENT GOES HERE</h1>
-                :
                 <UserPosts
                     foundUser={foundUser}
                     foundUserPosts={foundUserPosts}
@@ -101,7 +131,6 @@ const UserProfile = ({user, countries, setUser, selectedUserId}) => {
                     posts={userPosts}
                     deleteFromPosts={deleteFromPosts}
                     />
-                }
                 </div>
             </div>
         }

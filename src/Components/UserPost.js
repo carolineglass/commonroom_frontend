@@ -64,97 +64,133 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
             
             ?
             
-            <div className="user-post-card">
-            <h3 className="post-countryname" onClick={() => {history.push(`/country/${post.country.id}`)}}>
-                {post.country.name}</h3>
-            <p>
-                <img className="post-user-img" src={post.user.img} alt={post.user.username}/>
-                {post.user.username}
-            </p>
+        <div className="user-post-card">
+                <h3 className="post-countryname" onClick={() => {history.push(`/country/${post.country.id}`)}}>
+                        {post.country.name}</h3>
 
-            <img className="post-img" src={post.img}/>
-            <p>{post.date_created}</p> 
-            <h2>{post.title}</h2>
-            <p>Category: {post.category}</p>
-            <p>{post.post}</p>
-            <div className="likes-comments-container">
-                <button onClick={handleDelete} className="delete-post-button">❌</button>
+            <div className="img-and-content-container">  
+                <div className="post-img-container">
+                    <img className="post-img" src={post.img}/>
+                    <p className="post-user-container">
+                        <img className="post-user-img" src={post.user.img} alt={post.user.username}/>
+                        {post.user.username}
+                    </p>
+                </div>
+                    
 
-                {hasMatch 
-                ? 
-                    <>
-                     <button 
-                     onClick={handleDislike} 
-                     className="liked-button">
-                     👍</button>
-                     <span>CLICK TO UNLIKE</span>
-                    </>
-                 : 
-                    <>      
-                    <button 
-                    onClick={handleLike} 
-                    className="like-button">
-                    👍</button>
-                    <span>CLICK TO LIKE</span>
-                    </>
-                }
-                
-                <span>{" "}{likes.length}</span>
+                <div className="post-content-container"> 
 
-                <Comments 
-                    comments={post.comments} 
-                    postUserId={post.user.id}
-                    postId={post.id}
-                    userId={user.id}/>
-                </div> 
+                    <p>{post.date_created}</p> 
+                    <h2>{post.title}</h2>
+                    <p>Category: {post.category}</p>
+                    <p>{post.post}</p> 
+
+                    <div className="likes-comments-container">
+                        <button onClick={handleDelete} className="delete-post-button">❌</button>
+
+                        {hasMatch 
+                        ? 
+                            <>
+                            <button 
+                            onClick={handleDislike} 
+                            className="liked-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                            class="icon icon-tabler icon-tabler-heart" 
+                            width="50" height="50" viewBox="0 0 24 24" stroke-width="3" 
+                            stroke="#F44336" fill="none" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z"/>
+                            <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" />
+                            </svg></button>
+                            {/* <span>CLICK TO UNLIKE</span> */}
+                            </>
+                        : 
+                            <>      
+                            <button 
+                            onClick={handleLike} 
+                            className="like-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                            class="icon icon-tabler icon-tabler-heart" 
+                            width="50" height="50" viewBox="0 0 24 24" stroke-width="0.5" 
+                            stroke="#F44336" fill="none" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z"/>
+                            <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" />
+                            </svg></button>
+                            
+                            </>
+                        }
+                        
+                        {/* {likes.length} */}
+
+                        <Comments 
+                            comments={post.comments} 
+                            postUserId={post.user.id}
+                            postId={post.id}
+                            userId={user.id}/>
+                    </div> 
+                </div>
+                </div>          
             </div>
             
             :
 
             <div className="user-post-card">
-            <h3 className="post-countryname" onClick={() => {history.push(`/country/${post.country.id}`)}}>
-                {post.country.name}</h3>
-            <p>
-                <img className="post-user-img" src={post.user.img} alt={post.user.username}/>
-                {post.user.username}
-            </p>
+                <h3 className="post-countryname" onClick={() => {history.push(`/country/${post.country.id}`)}}>
+                        {post.country.name}</h3>
 
-            <img className="post-img" src={post.img}/>
-            <p>{post.date_created}</p> 
-            <h2>{post.title}</h2>
-            <p>Category: {post.category}</p>
-            <p>{post.post}</p>
-            <div className="likes-comments-container">
+            <div className="img-and-content-container">  
+                <div className="post-img-container">
+                    <img className="post-img" src={post.img}/>
+                    <p className="post-user-container">
+                        <img className="post-user-img" src={post.user.img} alt={post.user.username}/>
+                        {post.user.username}
+                    </p>
+                </div>
+                    
 
-                {hasMatch 
-                ? 
-                    <>
-                     <button 
-                     onClick={handleDislike} 
-                     className="liked-button">
-                     👍</button>
-                     <span>CLICK TO UNLIKE</span>
-                    </>
-                 : 
-                    <>      
-                    <button 
-                    onClick={handleLike} 
-                    className="like-button">
-                    👍</button>
-                    <span>CLICK TO LIKE</span>
-                    </>
-                }
-                
-                <span>{" "}{likes.length}</span>
+                <div className="post-content-container"> 
 
-                <Comments 
-                    comments={post.comments} 
-                    postUserId={post.user.id}
-                    postId={post.id}
-                    userId={user.id}/>
-                </div> 
+                    <p>{post.date_created}</p> 
+                    <h2>{post.title}</h2>
+                    <p>Category: {post.category}</p>
+                    <p>{post.post}</p> 
+
+                    <div className="likes-comments-container">
+
+                        {hasMatch 
+                        ? 
+                            <>
+                            <button 
+                            onClick={handleDislike} 
+                            className="liked-button">
+                            👍</button>
+                            <span>CLICK TO UNLIKE</span>
+                            </>
+                        : 
+                            <>      
+                            <button 
+                            onClick={handleLike} 
+                            className="like-button">
+                            👍</button>
+                            <span>CLICK TO LIKE</span>
+                            </>
+                        }
+                        
+                        <span>{" "}{likes.length}</span>
+
+                        <Comments 
+                            comments={post.comments} 
+                            postUserId={post.user.id}
+                            postId={post.id}
+                            userId={user.id}/>
+                    </div> 
+                </div>
+                </div>          
             </div>
-            
+                
             }
             
         </>

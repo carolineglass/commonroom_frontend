@@ -17,6 +17,7 @@ class Auto extends Component {
  
     return (
       <>
+      <div className="search-row">
       <div className="autocomplete-wrapper">
         <Autocomplete
           placeholder="Search a Country"
@@ -42,9 +43,10 @@ class Auto extends Component {
         />
         </div>
         <div className="search-button-div">
-          <button type="submit" onClick={this.handleSubmit}>
+          <button className="map-search-button" type="submit" onClick={this.handleSubmit}>
             <img src={Search} />
           </button>
+        </div>
         </div>
        </>
     );

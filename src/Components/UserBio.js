@@ -51,7 +51,6 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
                 <>
                 <img className="user-img" src={user.img} alt={user.full_name}/> 
                 <br/>
-                <button>change profile picture</button>
                 <h1>{user.full_name}</h1>
                 <h3 className="username">{user.username}</h3>
 
@@ -108,7 +107,7 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
                 
                 {/* {selectedUserId === user.id
                 ? */}
-                <button onClick={handleToggle}>Edit</button>
+                <button onClick={handleToggle}>Edit Profile</button>
                 {/* // :
                 // null
                 // } */}

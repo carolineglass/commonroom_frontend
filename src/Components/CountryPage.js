@@ -50,7 +50,9 @@ const CountryPage = ({foundCountry, user}) => {
         ?
         <div className="country-page-container">
             <div className="country-title">
-                <h1>{country.name}</h1>
+                <div className="country-title-div">
+                <h1>{country.name.toUpperCase()}</h1>
+                </div>
             </div>
             
             <div className="users-filter-posts">
