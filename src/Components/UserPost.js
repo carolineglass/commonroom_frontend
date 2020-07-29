@@ -86,7 +86,18 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
                     <p>{post.post}</p> 
 
                     <div className="likes-comments-container">
-                        <button onClick={handleDelete} className="delete-post-button">❌</button>
+                        <button onClick={handleDelete} className="delete-post-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" 
+                        width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" 
+                        stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"/>
+                        <line x1="4" y1="7" x2="20" y2="7" />
+                        <line x1="10" y1="11" x2="10" y2="17" />
+                        <line x1="14" y1="11" x2="14" y2="17" />
+                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                        </svg>
+                        </button>
 
                         {hasMatch 
                         ? 
@@ -96,14 +107,13 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
                             className="liked-button">
                             <svg xmlns="http://www.w3.org/2000/svg" 
                             class="icon icon-tabler icon-tabler-heart" 
-                            width="50" height="50" viewBox="0 0 24 24" stroke-width="3" 
+                            width="30" height="30" viewBox="0 0 24 24" stroke-width="3" 
                             stroke="#F44336" fill="none" 
                             stroke-linecap="round" 
                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z"/>
                             <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" />
                             </svg></button>
-                            {/* <span>CLICK TO UNLIKE</span> */}
                             </>
                         : 
                             <>      
@@ -112,7 +122,7 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
                             className="like-button">
                             <svg xmlns="http://www.w3.org/2000/svg" 
                             class="icon icon-tabler icon-tabler-heart" 
-                            width="50" height="50" viewBox="0 0 24 24" stroke-width="0.5" 
+                            width="30" height="30" viewBox="0 0 24 24" stroke-width="1" 
                             stroke="#F44336" fill="none" 
                             stroke-linecap="round" 
                             stroke-linejoin="round">
@@ -123,7 +133,7 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
                             </>
                         }
                         
-                        {/* {likes.length} */}
+                        {likes.length}
 
                         <Comments 
                             comments={post.comments} 
@@ -166,20 +176,34 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
                             <button 
                             onClick={handleDislike} 
                             className="liked-button">
-                            👍</button>
-                            <span>CLICK TO UNLIKE</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                            class="icon icon-tabler icon-tabler-heart" 
+                            width="30" height="30" viewBox="0 0 24 24" stroke-width="3" 
+                            stroke="#F44336" fill="none" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z"/>
+                            <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" />
+                            </svg></button>
                             </>
                         : 
                             <>      
                             <button 
                             onClick={handleLike} 
                             className="like-button">
-                            👍</button>
-                            <span>CLICK TO LIKE</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                            class="icon icon-tabler icon-tabler-heart" 
+                            width="30" height="30" viewBox="0 0 24 24" stroke-width="1" 
+                            stroke="#F44336" fill="none" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z"/>
+                            <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" />
+                            </svg></button>
                             </>
                         }
                         
-                        <span>{" "}{likes.length}</span>
+                        {likes.length}
 
                         <Comments 
                             comments={post.comments} 
