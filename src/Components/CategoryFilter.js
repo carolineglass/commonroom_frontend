@@ -38,7 +38,7 @@ const CategoryFilter = ({changeFilterSearchTerm, filterSearchTerm}) => {
             <select value={filterSearchTerm} onChange={handleFilter}>
                 <option value="All">All</option>
                 <option value="General">General</option>
-                <option value="Recommendation">Recommendations</option>
+                <option value="Recommendation">Recommendation</option>
                 <option value="Travel Buddy">Travel Buddy</option>
                 <option value="Food/Drink">Food/Drink</option>
                 <option value="Rideshare">Rideshare</option>

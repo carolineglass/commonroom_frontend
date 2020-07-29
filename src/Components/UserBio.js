@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
+import { useHistory } from "react-router-dom";
 
 const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUserCountry}) => {
+
+    let history = useHistory()
 
     let [toggle, setToggle] = useState(false)
     let [currently, setCurrently] = useState(user.country.id)
@@ -38,8 +41,6 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
                 })
     }
 
-    console.log("FOUNDUSERCOUNTRY", foundUser)
-
     return (
     <div className="user-bio">
     
@@ -60,14 +61,14 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
                         value={age}
                         onChange={(e) => setAge(e.target.value)}/>
                     <br/>
-                    <label>Currently in</label> {" "}
+                    <label>Currently in:</label> {" "}
                     <select value={currently} onChange={(e) => {setCurrently(e.target.value)}}>
                         {countries.map((country) => {
                             return <option value={country.id}>{country.name}</option>
                         })}
                     </select>
                     <br/>
-                    <label>From</label> {" "}
+                    <label>From:</label> {" "}
                     <input type="text"
                         value={from}
                         onChange={(e) => setFrom(e.target.value)}/>
@@ -77,7 +78,7 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
                         value={bio}
                         onChange={(e) => setBio(e.target.value)}/>
                     <br/>
-                    <label>Favorite Food:</label> {" "}
+                    <label>Favorite food:</label> {" "}
                     <input type="text"
                         value={answer}
                         onChange={(e) => setAnswer(e.target.value)}/>
@@ -93,15 +94,17 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
 
                 <h3 className="username">{user.username}</h3>
 
-                <p>{user.age}</p>
+                <p>{user.age} yrs old</p>
 
-                <p>Currently in <strong>{user.country.name}</strong></p>
+                <p className="bio-country" 
+                    onClick={() => {history.push(`/country/${user.country.id}`)}}>
+                        📍 <strong>{user.country.name}</strong></p>
                 
-                <p>From <strong>{user.from}</strong></p>
+                <p>From: <strong>{user.from}</strong></p>
                 
                 <p>Bio: <strong>{user.bio}</strong></p>
 
-                <p>Favorite Food:<strong>{user.answer}</strong></p>
+                <p>Favorite food: <strong>{user.answer}</strong></p>
 
                 {/* ternary for the edit button to only show up if the selected user === logged in */}
                 
@@ -123,15 +126,17 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
 
         <h3 className="username">{foundUser.username}</h3>
 
-        <p>{foundUser.age}</p>
+        <p>{foundUser.age} yrs old</p>
 
-        <p>Currently in <strong>{foundUserCountry}</strong></p>
+        <p className="bio-country" 
+            onClick={() => {history.push(`/country/${foundUser.country.id}`)}}>
+                📍 <strong>{foundUserCountry}</strong></p>
         
-        <p>From <strong>{foundUser.from}</strong></p>
+        <p>From: <strong>{foundUser.from}</strong></p>
         
         <p>Bio: <strong>{foundUser.bio}</strong></p>
 
-        <p>Favorite Food:<strong>{foundUser.answer}</strong></p>
+        <p>Favorite Food: <strong>{foundUser.answer}</strong></p>
         </>
         
         }

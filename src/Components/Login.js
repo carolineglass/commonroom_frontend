@@ -23,7 +23,7 @@ const Login = ({handleLogin}) => {
 
     return (
         <div className="login-container">
-            <h1 className="welcome-message">Welcome to CommonRoom!</h1><br></br>
+            <h1 className="welcome-message">Welcome to CommonRoom</h1><br></br>
 
         {toggle ?
 
