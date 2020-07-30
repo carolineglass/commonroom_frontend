@@ -56,17 +56,17 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
                 <h3 className="username">{user.username}</h3>
 
                 <form className="edit-bio-form" onSubmit={handleSubmit}>
-                    <label>Age:</label> {" "}
-                    <input type="number" 
-                        value={age}
-                        onChange={(e) => setAge(e.target.value)}/>
-                    <br/>
-                    <label>Currently in:</label> {" "}
+                <label>Currently in:</label> {" "}
                     <select value={currently} onChange={(e) => {setCurrently(e.target.value)}}>
                         {countries.map((country) => {
                             return <option value={country.id}>{country.name}</option>
                         })}
                     </select>
+                    <br/>
+                    <label>Age:</label> {" "}
+                    <input type="number" 
+                        value={age}
+                        onChange={(e) => setAge(e.target.value)}/>
                     <br/>
                     <label>From:</label> {" "}
                     <input type="text"
@@ -83,7 +83,7 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
                         value={answer}
                         onChange={(e) => setAnswer(e.target.value)}/>
                     <br/>
-                    <input type="submit" value="update profile" />
+                    <input className="post-button" type="submit" value="Update" />
                 </form>
                 </>
             :
@@ -94,12 +94,12 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
 
                 <h3 className="username">{user.username}</h3>
 
-                <p>{user.age} yrs old</p>
-
                 <p className="bio-country" 
                     onClick={() => {history.push(`/country/${user.country.id}`)}}>
-                        📍 <strong>{user.country.name}</strong></p>
-                
+                        📍 {user.country.name}</p>
+
+                <p>{user.age} yrs old</p>
+
                 <p>From: <strong>{user.from}</strong></p>
                 
                 <p>Bio: <strong>{user.bio}</strong></p>
@@ -110,7 +110,7 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
                 
                 {/* {selectedUserId === user.id
                 ? */}
-                <button onClick={handleToggle}>Edit Profile</button>
+                <button className="post-button" onClick={handleToggle}>Edit</button>
                 {/* // :
                 // null
                 // } */}
@@ -126,11 +126,11 @@ const UserBio = ({user, countries, setUser, foundUser, selectedUserId, foundUser
 
         <h3 className="username">{foundUser.username}</h3>
 
-        <p>{foundUser.age} yrs old</p>
-
         <p className="bio-country" 
             onClick={() => {history.push(`/country/${foundUser.country.id}`)}}>
-                📍 <strong>{foundUserCountry}</strong></p>
+                📍 {foundUserCountry}</p>
+
+        <p>{foundUser.age} yrs old</p>
         
         <p>From: <strong>{foundUser.from}</strong></p>
         

@@ -75,8 +75,8 @@ const AddPostForm = ({country, user, addNewPost}) => {
                 />
         
                 {/* <div className="category-form"> */}
-                <label>Choose Category</label>
-                <select value={category} onChange={(e) => {setCategory(e.target.value)}}>
+                <label className="dropdown-label">Select a Category</label>
+                <select className="dropdown-add" value={category} onChange={(e) => {setCategory(e.target.value)}}>
                     <option value="General">General</option>
                     <option value="Recommendation">Recommendation</option>
                     <option value="Travel Buddy">Travel Buddy</option>

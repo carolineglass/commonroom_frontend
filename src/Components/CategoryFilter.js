@@ -35,7 +35,7 @@ const CategoryFilter = ({changeFilterSearchTerm, filterSearchTerm}) => {
 
 
             {toggle ?
-            <select value={filterSearchTerm} onChange={handleFilter}>
+            <select className="dropdown-filter" value={filterSearchTerm} onChange={handleFilter}>
                 <option value="All">All</option>
                 <option value="General">General</option>
                 <option value="Recommendation">Recommendation</option>
