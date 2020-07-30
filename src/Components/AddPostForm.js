@@ -97,7 +97,7 @@ const AddPostForm = ({country, user, addNewPost}) => {
                 />
 
                 <input 
-                className="post-button"
+                className="post-button" 
                 type="submit"
                 value="Post"
                 />

@@ -164,6 +164,7 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
             {selectedUserId === user.id 
             
             ?
+            //logged in users posts 
         <div className="user-post-card">
 
                 <div className="top-div">
@@ -172,7 +173,8 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
                         {post.user.username}
                     </p>
                     <div className="country-flag-container">
-                        <h3 className="post-countryname">{post.country.name}</h3>
+                    <h3 className="post-countryname" onClick={() => {history.push(`/country/${post.country.id}`)}}>
+                        {post.country.name}</h3>
                         <img className="post-flag" src={post.country.flag} />
                     </div>
                 </div>
@@ -253,7 +255,7 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
             </div>
             
             :
-
+            // found users post
             <div className="user-post-card">
                 <h3 className="post-countryname" onClick={() => {history.push(`/country/${post.country.id}`)}}>
                         {post.country.name}</h3>

@@ -23,7 +23,7 @@ const Login = ({handleLogin}) => {
 
     return (
         <div className="login-container">
-            <h1 className="welcome-message">Welcome to CommonRoom</h1><br></br>
+            <h1 className="welcome-message">Welcome to <span>CommonRoom</span></h1><br></br>
 
         {toggle ?
 
@@ -100,9 +100,9 @@ const Login = ({handleLogin}) => {
                     />
             </form>
             {toggle ?
-                <p className="welcome-button" onClick={handleToggle}>Click to Sign-up</p>
+                <p className="welcome-button" onClick={handleToggle}>click to sign-up</p>
             :
-                <p className="welcome-button" onClick={handleToggle}>Click to Login</p>
+                <p className="welcome-button" onClick={handleToggle}>click to login</p>
             }
         </div>
         }

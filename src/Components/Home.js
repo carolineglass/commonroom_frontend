@@ -19,7 +19,7 @@ const Home = ({countries, user}) => {
 
             {user.username ? 
             <>
-            <h1>Hey,{" "}{" "}{user.username}</h1> <br></br> <h2>Let's Explore!</h2>
+            <h1 className="home-message">Hey,{" "}{" "}{user.username}</h1> <br></br> <h2>Let's Explore!</h2>
             </>
               :
             <h1></h1>

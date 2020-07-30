@@ -57,7 +57,7 @@ const CountryPage = ({foundCountry, user}) => {
             
             <div className="users-filter-posts">
                     <div className="country-users-container">
-                            <h3>Travelers in {country.name}</h3>
+                            <h3>{country.name}</h3>
                                 {country.current_users.map(user => {
                                 return <CountryUser 
                                     key={user.id} 

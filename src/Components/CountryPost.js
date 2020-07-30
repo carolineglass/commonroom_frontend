@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
 import Comments from './Comments'
+import { useHistory } from "react-router-dom";
 
 const CountryPost = ({post, user, deleteFromPosts}) => {
+
+    let history = useHistory()
 
     let [likes, setLikes] = useState(post.post_likes)
 
@@ -56,7 +59,7 @@ const CountryPost = ({post, user, deleteFromPosts}) => {
         <div className="country-post-card">
 
             <div className="top-div">
-                <p className="post-user-container">
+                <p onClick={() => {history.push(`/profile/${post.user.id}`)}} className="post-user-container">
                     <img className="post-user-img" src={post.user.img} alt={post.user.username}/>
                     {post.user.username}
                 </p>

@@ -72,6 +72,7 @@ const Comments = (props) => {
     
             <form onSubmit={handleSubmit}>
                 <input
+                className="comment-form"
                 type="text"
                 placeholder="Comment"
                 name="comment"
@@ -81,7 +82,8 @@ const Comments = (props) => {
 
                 <br/>
 
-                <input 
+                <input
+                className="submit-button" 
                 type="submit"
                 value="Add Comment"
                 />
