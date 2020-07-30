@@ -257,25 +257,31 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
             :
             // found users post
             <div className="user-post-card">
-                <h3 className="post-countryname" onClick={() => {history.push(`/country/${post.country.id}`)}}>
-                        {post.country.name}</h3>
-
-            <div className="img-and-content-container">  
-                <div className="post-img-container">
-                    <img className="post-img" src={post.img}/>
+                <div className="top-div">
                     <p className="post-user-container">
                         <img className="post-user-img" src={post.user.img} alt={post.user.username}/>
                         {post.user.username}
                     </p>
+                    <div className="country-flag-container">
+                    <h3 className="post-countryname" onClick={() => {history.push(`/country/${post.country.id}`)}}>
+                        {post.country.name}</h3>
+                        <img className="post-flag" src={post.country.flag} />
+                    </div>
                 </div>
                     
 
-                <div className="post-content-container"> 
+                <div className="img-and-content-container"> 
 
-                    <p>{post.date_created}</p> 
-                    <h2>{post.title}</h2>
-                    <p>Category: {post.category}</p>
-                    <p>{post.post}</p> 
+                    <div className="post-img-container">
+                        <img className="post-img" src={post.img}/> 
+                    </div>
+
+                    <div className="post-content-container">
+                        
+                        <p className="postdate">{post.date_created}</p>
+                        <h2 className="post-title">{post.title}</h2> 
+                        <p className="category">{post.category}</p>
+                        <p>{post.post}</p>
 
                     <div className="likes-comments-container">
 
@@ -309,6 +315,7 @@ const UserPost = ({user, post, deleteFromPosts, selectedUserId}) => {
                             <path stroke="none" d="M0 0h24v24H0z"/>
                             <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" />
                             </svg></button>
+                            
                             </>
                         }
                         

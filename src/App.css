@@ -160,7 +160,7 @@ a.nav-img {
   color: rgb(255, 255, 255);
   font-size: 60px;
   font-family: 'Lato', sans-serif;
-  text-shadow: 4px 3px 2px rgb(51, 104, 116);
+  /* text-shadow: 4px 3px 2px rgb(51, 104, 116); */
 }
 
 .welcome-and-search-container > h2 {
@@ -368,6 +368,7 @@ a.nav-img {
 .post-content-container {
   width: 60%;
   margin-left: 5%;
+  margin-right: 5%;
 }
 
 .post-countryname {
@@ -607,7 +608,7 @@ a.nav-img {
 /* USER PROFILE CSS */
 
 .profile-container {
-  background-image: url(https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1378&q=80);
+  background-image: url(https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -690,6 +691,7 @@ a.nav-img {
   display: flex;
   flex-direction: column;
   padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 
@@ -737,7 +739,7 @@ a.nav-img {
 .autocomplete-wrapper .item  {
   display: block;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
   padding: 15px;
 }
 
