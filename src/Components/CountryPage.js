@@ -3,6 +3,7 @@ import CountryUser from './CountryUser'
 import CountryPost from './CountryPost'
 import AddPostForm from './AddPostForm'
 import CategoryFilter from './CategoryFilter'
+import backpacker from '../images/backpackers.png'
 
 const CountryPage = ({foundCountry, user}) => {
 
@@ -49,7 +50,7 @@ const CountryPage = ({foundCountry, user}) => {
         {country.current_users 
         ?
         <div className="country-page-container">
-            <div className="country-title">
+            <div className="country-title" style={{backgroundImage: `url(${country.img})`}}>
                 <div className="country-title-div">
                 <h1>{country.name.toUpperCase()}</h1>
                 </div>
@@ -57,7 +58,8 @@ const CountryPage = ({foundCountry, user}) => {
             
             <div className="users-filter-posts">
                     <div className="country-users-container">
-                            <h3>{country.name}</h3>
+                        <img className="backpacker-icon" src={backpacker}/> 
+                            {/* <h3>{country.name}</h3> */}
                                 {country.current_users.map(user => {
                                 return <CountryUser 
                                     key={user.id} 
@@ -78,7 +80,10 @@ const CountryPage = ({foundCountry, user}) => {
                     </div>
                         <div className="country-posts-container">
                             {countryPosts.length === 0 ? 
-                                <h2>Be the first to post!</h2>
+                                <>
+                                <br></br>
+                                <h2 className="first-poster">Be the first to post!</h2>
+                                </>
                             :
                             filterByCategory().map(post => {
                             return <CountryPost 

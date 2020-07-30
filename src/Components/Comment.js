@@ -16,9 +16,9 @@ const Comment = ({comment, setComments, postId, userId, postUserId, deleteCommen
         <>
         <div className="comment">
             <div className="comment-img-and-button">
-                <div><p> <img src={comment.user.img} alt={comment.user.username}/>
+                <div><p> <span className="comment-user-background"><img src={comment.user.img} alt={comment.user.username}/>
                 {" "}
-                {comment.user.username}</p>
+                {comment.user.username}</span></p>
                 </div>
                 
             {userId === postUserId || userId === comment.user.id
